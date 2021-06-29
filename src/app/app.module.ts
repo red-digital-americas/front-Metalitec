@@ -26,7 +26,10 @@ import { ProduccionComponent } from './reportes/produccion/produccion.component'
 import { FinanzasComponent } from './reportes/finanzas/finanzas.component';
 import { ProductivadadComponent } from './reportes/productivadad/productivadad.component';
 import { ProveedoresComponent } from './reportes/proveedores/proveedores.component';
+import { MatIconModule} from '@angular/material/icon';
 import { MontadoresComponent } from './reportes/montadores/montadores.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,9 @@ import { MontadoresComponent } from './reportes/montadores/montadores.component'
     MontadoresComponent
   ],
   imports: [
+    MatTooltipModule,
     MatSidenavModule,
+    MatIconModule,
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,

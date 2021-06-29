@@ -1,6 +1,65 @@
-.margin{
+.margin {
     margin: 10px 10px 10px 10px;
 }
-.align{
+
+.align {
     text-align: center;
+}
+
+.small {
+    animation: rezise-small 2s;
+}
+
+
+.big {
+    animation: rezise-big 2s;
+}
+
+@keyframes rezise-small {
+    0% {
+        width: 170px;
+    }
+
+    100% {
+        width: 60px;
+    }
+}
+
+@keyframes rezise-big {
+    0% {
+        width: 60px;
+    }
+
+    100% {
+        width: 170px;
+    }
+}
+
+@keyframes opa-big {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes opa-small {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.color_icon{
+  color: #576998;
+}
+
+.open_close{
+    position: fixed;
+    bottom: 20px;
 }
