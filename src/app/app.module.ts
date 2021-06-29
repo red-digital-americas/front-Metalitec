@@ -25,6 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProduccionComponent } from './reportes/produccion/produccion.component';
 import { FinanzasComponent } from './reportes/finanzas/finanzas.component';
 import { ProductivadadComponent } from './reportes/productivadad/productivadad.component';
+import { ProveedoresComponent } from './reportes/proveedores/proveedores.component';
+import { MontadoresComponent } from './reportes/montadores/montadores.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { ProductivadadComponent } from './reportes/productivadad/productivadad.c
     SidebarComponent,
     ProduccionComponent,
     FinanzasComponent,
-    ProductivadadComponent
+    ProductivadadComponent,
+    ProveedoresComponent,
+    MontadoresComponent
   ],
   imports: [
     MatSidenavModule,
