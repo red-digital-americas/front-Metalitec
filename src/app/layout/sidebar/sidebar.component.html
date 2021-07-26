@@ -2,50 +2,51 @@
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small">
       <div class="align">
-        <img src="./assets/img/metalitec_logo.png" alt="">
+        <img src="./assets/img/metalitec_logo.png" alt="" class="img_width">
       </div>
+      <hr>
       <br>
-      <button mat-button [routerLink]="['/produccion']">Reporte de Producción</button>
+      <!--button mat-button [routerLink]="['/produccion']" class="size">Reporte de Producción</button>
+      <br-->
+      <button mat-button [routerLink]="['/finanzas']" routerLinkActive="router-link-active"  class="size top">
+        <mat-icon class="color_icon">attach_money</mat-icon>
+        Informes financieros</button>
+      <!--br>
+      <button mat-button [routerLink]="['/productividad']" class="size">Clasificación de trabajadores</button-->
       <br>
-      <button mat-button [routerLink]="['/finanzas']">Informes financieros</button>
+      <button mat-button [routerLink]="['/proveedores']" routerLinkActive="router-link-active" class="size top">
+        <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
+        Clasificación de proveedores</button>
       <br>
-      <button mat-button [routerLink]="['/productividad']">Clasificación de trabajadores</button>
-      <br>
-      <button mat-button [routerLink]="['/proveedores']">Clasificación de proveedores</button>
-      <br>
-      <button mat-button [routerLink]="['/montadores']">Proveedores montadores</button>
+      <button mat-button [routerLink]="['/montadores']" routerLinkActive="router-link-active" class="size top">
+        <mat-icon class="color_icon">local_shipping</mat-icon>
+        Proveedores montadores</button>
     </div>
 
     <div *ngIf='!menu' id="div_small">
       <div class="align">
-        <img src="./assets/img/icon.png" alt="" style="width: 70px">
+        <img src="./assets/img/icon.png" alt="" style="width: 60px">
       </div>
+      <hr>
       <br>
-      <button mat-button [routerLink]="['/produccion']" matTooltip="Reporte de Produccion">
+      <!--button mat-button [routerLink]="['/produccion']" matTooltip="Reporte de Produccion">
         <mat-icon class="color_icon">summarize</mat-icon>
       </button>
-      <br>
+      <br-->
       <button mat-button [routerLink]="['/finanzas']" matTooltip="Informes financieros">
-        <mat-icon class="color_icon">summarize</mat-icon>
+        <mat-icon class="color_icon">attach_money</mat-icon>
       </button>
       <br>
-      <button mat-button [routerLink]="['/productividad']" matTooltip="Clasificación de trabajadores">
+      <!--button mat-button [routerLink]="['/productividad']" matTooltip="Clasificación de trabajadores">
         <mat-icon class="color_icon">summarize</mat-icon>
       </button>
-      <br>
+      <br-->
       <button mat-button [routerLink]="['/proveedores']" matTooltip="Clasificación de proveedores">
-        <mat-icon class="color_icon">summarize</mat-icon>
+        <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
       </button>
       <br>
       <button mat-button [routerLink]="['/montadores']" matTooltip="Proveedores montadores">
-        <mat-icon class="color_icon">summarize</mat-icon>
-      </button>
-    </div>
-
-    <div class="open_close">
-      <button mat-button (click)="menus()">
-        <mat-icon class="color_icon" *ngIf='menu'>arrow_back_ios</mat-icon>
-        <mat-icon class="color_icon" *ngIf='!menu'>arrow_forward_ios</mat-icon>
+        <mat-icon class="color_icon">local_shipping</mat-icon>
       </button>
     </div>
 

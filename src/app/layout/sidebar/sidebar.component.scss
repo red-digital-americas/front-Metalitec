@@ -1,15 +1,32 @@
 .margin {
-    margin: 10px 10px 10px 10px;
+    margin: 50px 10px 10px 10px;
 }
 
 .align {
     text-align: center;
 }
 
+.top{
+    margin-top: 10px;
+}
+
 .small {
     animation: rezise-small 2s;
 }
 
+.size_btn{
+  width: 220px;
+}
+
+.img_width{
+  width: 90px;
+}
+
+.size{
+    font-size: 12px;
+    width: 100%;
+    text-align: inherit;
+}
 
 .big {
     animation: rezise-big 2s;
@@ -62,4 +79,8 @@
 .open_close{
     position: fixed;
     bottom: 20px;
+}
+
+hr{
+   color: rgba(0,0,0,0.3);
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  @HostListener('document:click', ['$event'])
+  onClick(btn: any) {
+    if (btn.path[0].id == "menu") {
+      this.ngOnInit();
+    }
+ }
 
+  constructor() { }
   ngOnInit(): void {
+    setTimeout(() => {
+      console.log(document.getElementById("drawer")?.clientWidth);
+      document.getElementById("mat-drawer-content")?.setAttribute("style", `margin-left: ${document.getElementById("drawer")?.clientWidth}`);
+    }, 2200);
   }
 
 }

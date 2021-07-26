@@ -8,3 +8,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.router-link-active{
+    color: white !important;
+    background-color: rgb(128, 128, 226);
+    mat-icon{
+        color: white !important;
+    }
+}
