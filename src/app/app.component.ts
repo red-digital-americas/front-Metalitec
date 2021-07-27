@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Metalitec-Web';
+
+  constructor(private spinner: NgxSpinnerService){
+
+  }
+
+
+  show(){
+    this.spinner.show();
+  }
+
+  hide(){
+    this.spinner.hide();
+  }
+
+
 }

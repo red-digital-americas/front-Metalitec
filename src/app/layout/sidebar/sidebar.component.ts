@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import { ConectionapiService } from 'src/app/authService/conectionapi.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +9,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: ConectionapiService, public loader: AppComponent) {}
 
   @HostListener('document:click', ['$event'])
   onClick(btn: any) {
@@ -15,12 +17,135 @@ export class SidebarComponent implements OnInit {
       this.menus();
     }
     console.log('button', btn);
- }
-
-
-  ngOnInit(): void {
   }
-  
+
+
+  ngOnInit(): void {}
+ 
+  //***********************************************//
+  //CONSULTA DE REPORTES FINANCIEROS//
+  getFinance() {
+    this.loader.show();
+    this.auth.service_general_get("FinancialReport/Budget-Advance").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("FinancialReport/Operating-Results-Summary").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+
+    this.auth.service_general_get("FinancialReport/Cash-Flow").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("FinancialReport/State-Results").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("FinancialReport/Main-Account-Evaluation").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("FinancialReport/Balance-Sheet-Summary").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("FinancialReport/Funding-Investment-Operations").subscribe(response => {
+      console.log("response: ", response)
+      this.loader.hide();
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+  }
+  //Supplier Assemblers//
+  getSupplierAssemblers() {
+    this.loader.show();
+    this.auth.service_general_get("SupplierAssemblers/Assembly-Released-On-Site").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierAssemblers/Program-Mounting").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+
+    this.auth.service_general_get("SupplierAssemblers/Top-5").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierAssemblers/Variation-Budget").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierAssemblers/Payments-Assembly").subscribe(response => {
+      console.log("response: ", response);
+      this.loader.hide();
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+  }
+  //Supplier Classification//
+  getSupplierClassification() {
+    this.loader.show();
+    this.auth.service_general_get("SupplierClassification/Top").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierClassification/Materials-Family").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+
+    this.auth.service_general_get("SupplierClassification/Purchase-History").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierClassification/Price-Trend").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierClassification/Price-Trend").subscribe(response => {
+      console.log("response: ", response)
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+
+    this.auth.service_general_get("SupplierClassification/Suppliers").subscribe(response => {
+      console.log("response: ", response);
+      this.loader.hide();
+    },(err)=>{
+      console.log("Error: ", err)
+    })
+  }
 
   public menu: boolean = true;
   public small: boolean = false;

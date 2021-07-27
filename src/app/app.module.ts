@@ -29,6 +29,8 @@ import { ProveedoresComponent } from './reportes/proveedores/proveedores.compone
 import { MatIconModule} from '@angular/material/icon';
 import { MontadoresComponent } from './reportes/montadores/montadores.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -42,11 +44,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MontadoresComponent
   ],
   imports: [
+    NgxSpinnerModule,
     MatTooltipModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MdbCarouselModule,
     MdbCheckboxModule,

@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       console.log(document.getElementById("drawer")?.clientWidth);
-      document.getElementById("mat-drawer-content")?.setAttribute("style", `margin-left: ${document.getElementById("drawer")?.clientWidth}`);
+      document.getElementById("mat-drawer-content")?.setAttribute("style", `margin-left: ${document.getElementById("drawer")?.clientWidth+'px'} !important`);
     }, 2200);
   }
 
