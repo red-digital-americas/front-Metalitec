@@ -78,6 +78,7 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
     */
+    this.loader.hide();
   }
   //Supplier Assemblers//
   getSupplierAssemblers() {
