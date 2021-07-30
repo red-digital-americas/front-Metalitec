@@ -26,11 +26,13 @@ export class SidebarComponent implements OnInit {
   //CONSULTA DE REPORTES FINANCIEROS//
   getFinance() {
     this.loader.show();
+    /*
     this.auth.service_general_get("FinancialReport/Budget-Advance").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
     this.auth.service_general_get("FinancialReport/Operating-Results-Summary").subscribe(response => {
       console.log("response: ", response)
@@ -38,12 +40,13 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
 
-
+    /*
     this.auth.service_general_get("FinancialReport/Cash-Flow").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
     this.auth.service_general_get("FinancialReport/State-Results").subscribe(response => {
       console.log("response: ", response)
@@ -51,24 +54,30 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
 
+    /*
     this.auth.service_general_get("FinancialReport/Main-Account-Evaluation").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
+    /*
     this.auth.service_general_get("FinancialReport/Balance-Sheet-Summary").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
+    /*
     this.auth.service_general_get("FinancialReport/Funding-Investment-Operations").subscribe(response => {
       console.log("response: ", response)
       this.loader.hide();
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
   }
   //Supplier Assemblers//
   getSupplierAssemblers() {
