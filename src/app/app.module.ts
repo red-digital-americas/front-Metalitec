@@ -35,6 +35,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
   ],
   imports: [
     MatTabsModule,
+    MatExpansionModule,
     NgxSpinnerModule,
     MatTooltipModule,
     MatSidenavModule,
