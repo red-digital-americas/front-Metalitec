@@ -33,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   ],
   imports: [
     MatTabsModule,
+    MatExpansionModule,
     NgxSpinnerModule,
     MatTooltipModule,
     MatSidenavModule,
