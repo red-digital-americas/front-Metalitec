@@ -7,12 +7,16 @@ import { MontadoresComponent } from './reportes/montadores/montadores.component'
 import { ProduccionComponent } from './reportes/produccion/produccion.component';
 import { ProductivadadComponent } from './reportes/productivadad/productivadad.component';
 import { ProveedoresComponent } from './reportes/proveedores/proveedores.component';
-
+import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
 const routes: Routes = [
   {
     path: 'home',
     component: LayoutComponent,
-    children:[
+    children: [
+      {
+        path:'usuarios',
+        component: UsuariosComponent
+      },
       {
         path:'produccion',
         component: ProduccionComponent
