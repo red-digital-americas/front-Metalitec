@@ -14,7 +14,7 @@ export class UsuariosComponent implements OnInit {
     {id: 3, Nombre: 'Larry', Area: 'Ensamble', Role: 'Admin'},
   ];
 
-  headElements = ['Nombre', 'Area', 'Role'];
+  headElements = ['id', 'Nombre', 'Area', 'Role', 'Accion'];
 
   ngOnInit(): void {
   }

@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AvatarModule } from 'ngx-avatar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -49,6 +51,7 @@ import { MatIconModule } from '@angular/material/icon';
     ProveedoresComponent,
     MontadoresComponent,
     LoginComponent,
+    UsuariosComponent,
     HeaderComponent,
     DashboardComponent
   ],
@@ -79,7 +82,8 @@ import { MatIconModule } from '@angular/material/icon';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
