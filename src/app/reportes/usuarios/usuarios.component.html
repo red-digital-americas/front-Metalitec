@@ -1,37 +1,17 @@
-<div class="container">
-	<div class="row">
-		<div class="col-12">
-			<table mdbTable>
-				<thead class="black white-text">
-					<tr>
-						<th *ngFor="let head of headElements" scope="col">{{head}} </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr mdbTableCol *ngFor="let el of elements">
-						<!-- <th scope="row">{{el.id}}</th> -->
-						<td>{{el.Nombre}}</td>
-						<td>{{el.Area}}</td>
-						<td>{{el.Role}}</td>
-					</tr>
-				</tbody>
-			</table>
+
+<table mdbTable>
+	<thead class="black white-text">
+		<tr>
+			<th *ngFor="let head of headElements" scope="col">{{head}} </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr mdbTableCol *ngFor="let el of elements">
+			<th scope="row">{{el.id}}</th>
+			<td>{{el.Nombre}}</td>
+			<td>{{el.Area}}</td>
+			<td>{{el.Role}}</td>
+		</tr>
+	</tbody>
+</table>
 			
-			<table mdbTable>
-				<thead class="grey lighten-1 black-text">
-					<tr>
-						<th *ngFor="let head of headElements" scope="col">{{head}} </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr mdbTableCol *ngFor="let el of elements">
-						<!-- <th scope="row">{{el.id}}</th> -->
-						<td>{{el.Nombre}}</td>
-						<td>{{el.Area}}</td>
-						<td>{{el.Role}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
