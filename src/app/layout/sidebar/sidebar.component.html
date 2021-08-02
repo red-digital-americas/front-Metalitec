@@ -2,23 +2,23 @@
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small">
       <div class="align">
-        <img src="./assets/img/metalitec_logo.png" alt="" class="img_width">
+        <img src="./assets/img/logo.png" alt="" class="img_width">
       </div>
       <hr>
       <br>
       <!--button mat-button [routerLink]="['/produccion']" class="size">Reporte de Producción</button>
       <br-->
-      <button mat-button [routerLink]="['/finanzas']" routerLinkActive="router-link-active" (click)="getFinance()"  class="size top">
+      <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active" (click)="getFinance()"  class="size top">
         <mat-icon class="color_icon">attach_money</mat-icon>
         Informes financieros</button>
       <!--br>
       <button mat-button [routerLink]="['/productividad']" class="size">Clasificación de trabajadores</button-->
       <br>
-      <button mat-button [routerLink]="['/proveedores']" routerLinkActive="router-link-active" class="size top" (click)="getSupplierClassification()">
+      <button mat-button [routerLink]="['/home/proveedores']" routerLinkActive="router-link-active" class="size top" (click)="getSupplierClassification()">
         <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
         Clasificación de proveedores</button>
       <br>
-      <button mat-button [routerLink]="['/montadores']" routerLinkActive="router-link-active" class="size top" (click)="getSupplierAssemblers()">
+      <button mat-button [routerLink]="['/home/montadores']" routerLinkActive="router-link-active" class="size top" (click)="getSupplierAssemblers()">
         <mat-icon class="color_icon">local_shipping</mat-icon>
         Proveedores montadores</button>
     </div>
@@ -33,7 +33,7 @@
         <mat-icon class="color_icon">summarize</mat-icon>
       </button>
       <br-->
-      <button mat-button [routerLink]="['/finanzas']" matTooltip="Informes financieros"  (click)="getFinance()">
+      <button mat-button [routerLink]="['/home/finanzas']" matTooltip="Informes financieros"  (click)="getFinance()">
         <mat-icon class="color_icon">attach_money</mat-icon>
       </button>
       <br>
@@ -41,11 +41,11 @@
         <mat-icon class="color_icon">summarize</mat-icon>
       </button>
       <br-->
-      <button mat-button [routerLink]="['/proveedores']" matTooltip="Clasificación de proveedores" (click)="getSupplierClassification()">
+      <button mat-button [routerLink]="['/home/proveedores']" matTooltip="Clasificación de proveedores" (click)="getSupplierClassification()">
         <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
       </button>
       <br>
-      <button mat-button [routerLink]="['/montadores']" matTooltip="Proveedores montadores" (click)="getSupplierAssemblers()">
+      <button mat-button [routerLink]="['/home/montadores']" matTooltip="Proveedores montadores" (click)="getSupplierAssemblers()">
         <mat-icon class="color_icon">local_shipping</mat-icon>
       </button>
     </div>
