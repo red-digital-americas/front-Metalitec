@@ -52,7 +52,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProveedoresComponent,
     MontadoresComponent,
     LoginComponent,
-    UsuariosComponent
+    UsuariosComponent,
     HeaderComponent,
     DashboardComponent
   ],
