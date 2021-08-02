@@ -3,17 +3,31 @@
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
- 
+
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 
-.router-link-active{
+.router-link-active {
     color: white !important;
     background-color: rgb(128, 128, 226);
-    mat-icon{
+
+    mat-icon {
         color: white !important;
+    }
+}
+
+.login_tabs {
+    mat-tab-header {
+        display: none !important;
     }
 }
