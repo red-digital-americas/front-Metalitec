@@ -31,7 +31,8 @@ import { MontadoresComponent } from './reportes/montadores/montadores.component'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { LoginComponent } from './login/login.component';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +42,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FinanzasComponent,
     ProductivadadComponent,
     ProveedoresComponent,
-    MontadoresComponent
+    MontadoresComponent,
+    LoginComponent
   ],
   imports: [
+    MatTabsModule,
     NgxSpinnerModule,
     MatTooltipModule,
     MatSidenavModule,

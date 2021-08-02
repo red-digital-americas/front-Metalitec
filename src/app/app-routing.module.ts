@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './login/login.component';
 import { FinanzasComponent } from './reportes/finanzas/finanzas.component';
 import { MontadoresComponent } from './reportes/montadores/montadores.component';
 import { ProduccionComponent } from './reportes/produccion/produccion.component';
@@ -9,7 +10,7 @@ import { ProveedoresComponent } from './reportes/proveedores/proveedores.compone
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: LayoutComponent,
     children:[
       {
@@ -33,7 +34,12 @@ const routes: Routes = [
         component: MontadoresComponent
       },
   ]
+  },
+  {
+    path: '',
+    component: LoginComponent,
   }
+
 ];
 
 @NgModule({
