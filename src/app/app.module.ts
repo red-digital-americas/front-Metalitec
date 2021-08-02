@@ -26,7 +26,6 @@ import { ProduccionComponent } from './reportes/produccion/produccion.component'
 import { FinanzasComponent } from './reportes/finanzas/finanzas.component';
 import { ProductivadadComponent } from './reportes/productivadad/productivadad.component';
 import { ProveedoresComponent } from './reportes/proveedores/proveedores.component';
-import { MatIconModule} from '@angular/material/icon';
 import { MontadoresComponent } from './reportes/montadores/montadores.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,7 +37,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './layout/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
