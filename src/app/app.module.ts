@@ -36,6 +36,10 @@ import { LoginComponent } from './login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AvatarModule } from 'ngx-avatar';
+import { MatMenuModule } from '@angular/material/menu';
+import { HeaderComponent } from './layout/header/header.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +53,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MontadoresComponent,
     LoginComponent,
     UsuariosComponent
+    HeaderComponent,
+    DashboardComponent
   ],
   imports: [
+    MatMenuModule,
+    AvatarModule,
     MatTabsModule,
     MatExpansionModule,
     NgxSpinnerModule,

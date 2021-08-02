@@ -542,3 +542,14 @@ input.input100 {
     background-position: center;
     background-size:auto;
 }
+
+.flex{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.icon-top{
+  cursor: pointer;
+  margin-top: 3%;
+}

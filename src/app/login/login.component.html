@@ -1,26 +1,29 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-form-title bg" >
+            <div class="login100-form-title bg">
                 <span class="login100-form-title-1">
-                  
+
                 </span>
             </div>
 
             <!---------------------TABS ANGULAR MATERIAL ------------------------->
-            <mat-tab-group  [selectedIndex]="selectedIndex" class="login_tabs">
+            <mat-tab-group [selectedIndex]="selectedIndex" class="login_tabs">
 
                 <mat-tab label="First">
                     <form class="login100-form validate-form">
-                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                        <div class="wrap-input100 validate-input m-b-26 flex" data-validate="Username is required">
                             <input class="input100" type="text" name="username" placeholder="Username">
+                            <mat-icon class="icon-top">account_circle</mat-icon>
                             <span class="focus-input100"></span>
                         </div>
 
                         <br>
 
-                        <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password">
+                        <div class="wrap-input100 validate-input m-b-18 flex" data-validate="Password is required">
+                            <input class="input100" type="{{type_input}}" name="pass" placeholder="Password">
+                            <mat-icon *ngIf="!eyed" class="icon-top" (click)="changeType(true)">visibility</mat-icon>
+                            <mat-icon *ngIf="eyed" class="icon-top" (click)="changeType(false)">visibility_off</mat-icon>
                             <span class="focus-input100"></span>
                         </div>
 
@@ -42,10 +45,11 @@
 
 
 
-                <mat-tab label="Second" >
+                <mat-tab label="Second">
                     <form class="login100-form validate-form">
-                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                        <div class="wrap-input100 validate-input m-b-26 flex" data-validate="Username is required">
                             <input class="input100" type="text" name="username" placeholder="Username">
+                            <mat-icon class="icon-top">account_circle</mat-icon>
                             <span class="focus-input100"></span>
                         </div>
 
