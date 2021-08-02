@@ -1,0 +1,17 @@
+.altura{
+    height: 80px;
+    display: flex;
+}
+
+.align_avatar{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+.align{
+    margin-top: 2%;
+    flex-basis: 50%;
+}

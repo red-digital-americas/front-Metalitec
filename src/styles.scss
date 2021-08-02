@@ -19,7 +19,7 @@ body {
 
 .router-link-active {
     color: white !important;
-    background-color: rgb(128, 128, 226);
+    background-color: #2964a0;
 
     mat-icon {
         color: white !important;
@@ -32,9 +32,44 @@ body {
     }
 }
 
-.mat-expansion-panel{
-  box-shadow: 0px !important;
-}@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+.menu_expansion{
+    .mat-expansion-panel{
+        box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%) !important;
+    }
+
+    .mat-expansion-indicator{
+       color: white !important;
+    }
+
+    .mat-expansion-indicator::after{
+        color: white !important;
+    }
+}
+
+.menu_expansion_small{
+    .mat-expansion-panel{
+        box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%) !important;
+    }
+
+    .mat-expansion-indicator{
+        display: none !important;
+    }
+
+    .mat-expansion-indicator::after{
+        display: none !important;
+    }
+}
+
+.margin{
+    margin: 2%;
+}
+
+
+.color_metalitec{
+   color: #1F4C7A;
+}
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';

@@ -17,6 +17,18 @@ export class LoginComponent implements OnInit {
     this.selectedIndex = index;
   }
 
+  public type_input = 'password';
+  public eyed : boolean = false;
+  public changeType(type:any) {
+     if(type == true){
+      this.type_input = 'text';
+      this.eyed = true;
+     }else{
+      this.type_input = 'password';
+      this.eyed = false;
+     }
+  }
+
   login(){
     this.router.navigate(['/home']);
   }

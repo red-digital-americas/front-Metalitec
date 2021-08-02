@@ -7,14 +7,14 @@
       <hr>
       <br>
 
-      <mat-accordion class="example-headers-align" multi>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
+      <mat-accordion class="menu_expansion" multi>
+        <mat-expansion-panel class="bg_expansion menu_expansion">
+          <mat-expansion-panel-header class="header_expansion">
+            <mat-panel-title class="title_expansion">
               Reportes
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div>
+          <div class="title_expansion">
             <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active"
               (click)="getFinance()" class="size top">
               <mat-icon class="color_icon">attach_money</mat-icon>
@@ -35,36 +35,64 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
+
+      <mat-accordion class="menu_expansion" multi>
+        <mat-expansion-panel class="bg_expansion menu_expansion">
+          <mat-expansion-panel-header class="header_expansion">
+            <mat-panel-title class="title_expansion">
+              Admin Center
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="title_expansion">
+            <button mat-button  [routerLink]="['/home/usuarios']" routerLinkActive="router-link-active" class="size top">
+              <mat-icon class="color_icon">group</mat-icon>
+              Usuarios
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
       <br>
     </div>
 
     <div *ngIf='!menu' id="div_small">
       <div class="align">
-        <img src="./assets/img/icon.png" alt="" style="width: 60px">
+        <img src="./assets/img/logo.png" alt="" style="width: 60px">
       </div>
       <hr>
       <br>
-      <!--button mat-button [routerLink]="['/produccion']" matTooltip="Reporte de Produccion">
-        <mat-icon class="color_icon">summarize</mat-icon>
+
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon class="color_icon">description</mat-icon>
       </button>
-      <br-->
-      <button mat-button [routerLink]="['/home/finanzas']" matTooltip="Informes financieros" (click)="getFinance()">
-        <mat-icon class="color_icon">attach_money</mat-icon>
-      </button>
+
+      <mat-menu #menu="matMenu" class="bg_expansion">
+        <button mat-button [routerLink]="['/home/finanzas']" (click)="getFinance()">
+          Informes financieros
+        </button>
+        <br>
+        <button mat-button [routerLink]="['/home/proveedores']"
+          (click)="getSupplierClassification()">
+          Clasificación de proveedores
+        </button>
+        <br>
+        <button mat-button [routerLink]="['/home/montadores']"
+          (click)="getSupplierAssemblers()">
+          Proveedores montadores
+        </button>
+      </mat-menu>
+
       <br>
-      <!--button mat-button [routerLink]="['/productividad']" matTooltip="Clasificación de trabajadores">
-        <mat-icon class="color_icon">summarize</mat-icon>
+      
+      <button mat-button [matMenuTriggerFor]="admin">
+        <mat-icon class="color_icon">group</mat-icon>
       </button>
-      <br-->
-      <button mat-button [routerLink]="['/home/proveedores']" matTooltip="Clasificación de proveedores"
-        (click)="getSupplierClassification()">
-        <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
-      </button>
-      <br>
-      <button mat-button [routerLink]="['/home/montadores']" matTooltip="Proveedores montadores"
-        (click)="getSupplierAssemblers()">
-        <mat-icon class="color_icon">local_shipping</mat-icon>
-      </button>
+
+      <mat-menu #admin="matMenu" class="bg_expansion">
+        <button mat-button [routerLink]="['/home/usuarios']">
+          Usuarios
+        </button>
+      </mat-menu>
+
     </div>
 
   </div>
