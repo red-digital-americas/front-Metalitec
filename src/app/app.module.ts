@@ -40,6 +40,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './layout/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogMessageComponent } from './dialog/dialog-message/dialog-message.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRippleModule } from '@angular/material/core';
+import { DocumentosComponent } from './admin-center/documentos/documentos.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +59,15 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     UsuariosComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogMessageComponent, 
+    DocumentosComponent
   ],
   imports: [
+    MatRippleModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     AvatarModule,
     MatTabsModule,
