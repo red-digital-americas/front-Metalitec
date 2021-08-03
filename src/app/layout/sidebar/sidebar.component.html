@@ -1,7 +1,7 @@
 <div class="margin">
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small">
-      <div class="align">
+      <div class="align cursor" [routerLink]="['/home/dashboard']">
         <img src="./assets/img/logo.png" alt="" class="img_width">
       </div>
       <hr>
@@ -60,7 +60,7 @@
     </div>
 
     <div *ngIf='!menu' id="div_small">
-      <div class="align">
+      <div class="align cursor" [routerLink]="['/home/dashboard']">
         <img src="./assets/img/logo.png" alt="" style="width: 60px">
       </div>
       <hr>
