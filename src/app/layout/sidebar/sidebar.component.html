@@ -2,7 +2,7 @@
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small">
       <div class="align cursor" [routerLink]="['/home/dashboard']">
-        <img src="./assets/img/logo.png" alt="" class="img_width">
+        <img src="./assets/img/logo.png" alt="" class="img_width filter_white">
       </div>
       <hr>
       <br>
@@ -61,7 +61,7 @@
 
     <div *ngIf='!menu' id="div_small">
       <div class="align cursor" [routerLink]="['/home/dashboard']">
-        <img src="./assets/img/logo.png" alt="" style="width: 60px">
+        <img src="./assets/img/logo.png" alt="" style="width: 60px" class="filter_white">
       </div>
       <hr>
       <br>
