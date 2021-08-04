@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   title = 'Metalitec';
 
-  constructor(private spinner: NgxSpinnerService, public _router:Router){
+  constructor(public _router:Router){
      
   }
 
@@ -23,13 +23,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  show(){
-    this.spinner.show();
-  }
 
-  hide(){
-    this.spinner.hide();
-  }
 
 
 }

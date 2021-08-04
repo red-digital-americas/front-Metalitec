@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GeneralConfirmacionComponent } from '../dialog/general-confirmacion/general-confirmacion.component';
+import { LoaderService } from 'src/app/loaderService/loader.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class UsuariosComponent implements OnInit {
   // @ViewChild(MatPaginator) paguser: MatPaginator;
   search: any;
 
-  constructor(public auth: ConectionapiService, public loader: AppComponent, public _dialog: MatDialog) { }
+  constructor(public auth: ConectionapiService, public loader: LoaderService, public _dialog: MatDialog) { }
 
   headElements = [ 'Nombre', 'Correo', 'Role', 'Accion'];
   dataUser: any;
@@ -36,12 +37,11 @@ export class UsuariosComponent implements OnInit {
       // let respUser = response.result;
       console.log("user: ", response.result);
       this.dataUser = response.result;
-      
+      this.loader.hide();
     },(err)=>{
-      console.log("Error: ", err)
-    })
-    this.loader.hide();
-    
+      console.log("Error: ", err);
+      this.loader.hide();
+    })   
   }
   getCatalog() {
     this.auth.service_general_get('Role/All').subscribe(resp => {

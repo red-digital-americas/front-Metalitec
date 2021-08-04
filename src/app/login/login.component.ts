@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { ConectionapiService } from '../authService/conectionapi.service';
 import { DialogMessageComponent } from '../dialog/dialog-message/dialog-message.component';
+import { LoaderService } from '../loaderService/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   public loginFormGroup: FormGroup;
   public recoverFormPassword: FormGroup;
 
-  constructor(private _dialog: MatDialog, public loader: AppComponent, public router: Router, public auth: ConectionapiService, private _formBuilder: FormBuilder) {
+  constructor(private _dialog: MatDialog, public loader: LoaderService, public router: Router, public auth: ConectionapiService, private _formBuilder: FormBuilder) {
 
     const emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.loginFormGroup = this._formBuilder.group({

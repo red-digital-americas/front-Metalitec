@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { ConectionapiService } from 'src/app/authService/conectionapi.service';
+import { LoaderService } from 'src/app/loaderService/loader.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,7 @@ import { ConectionapiService } from 'src/app/authService/conectionapi.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public auth: ConectionapiService, public loader: AppComponent) {}
+  constructor(public auth: ConectionapiService, public loader: LoaderService) {}
 
   @HostListener('document:click', ['$event'])
   onClick(btn: any) {
@@ -50,8 +51,10 @@ export class SidebarComponent implements OnInit {
 
     this.auth.service_general_get("FinancialReport/State-Results").subscribe(response => {
       console.log("response: ", response)
+      this.loader.hide();
     },(err)=>{
       console.log("Error: ", err)
+      this.loader.hide();
     })
 
     /*
@@ -78,7 +81,7 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
     */
-    this.loader.hide();
+    
   }
   //Supplier Assemblers//
   getSupplierAssemblers() {
