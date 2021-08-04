@@ -62,8 +62,8 @@
 						
 
 					<!-- </mdb-select> -->
-					<select class="form-control" required [(ngModel)]="data.roleId" [formControl]="roleId" name="" id="role">
-						<mdb-select-option *ngFor="let option of roleData" [value]="option.id">{{ option.role }}</mdb-select-option>
+					<select mdbInput class="form-control" required [(ngModel)]="data.roleId" [formControl]="roleId" name="" id="role">
+						<option *ngFor="let option of roleData" [value]="option.id">{{ option.role }}</option>
 					</select>
 					<label mdbLabel class="form-label" for="role">Role</label>
 				</mdb-form-control>
@@ -83,21 +83,23 @@
 				</mdb-form-control>
 				<mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="email?.invalid && (email?.dirty || email?.touched) && validar">Campo requerido</mat-hint>
 			</div>
-			<div class="col-12 col-md-6">
-				<mdb-form-control>
+			<div [hidden]="data.id == 0" class="col-12 col-md-6 changePass">
+				<span (click)="changePassword(data.email)">Cambiar Contraseña</span>
+
+				<!-- <mdb-form-control>
 					<input required [(ngModel)]="data.password" [formControl]="password"  mdbInput type="password" id="password" class="form-control" />
 					<label mdbLabel class="form-label" for="password">Contraseña</label>
 				</mdb-form-control>
-				<mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="password?.invalid && (password?.dirty || password?.touched) && validar">Campo requerido</mat-hint>
+				<mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="password?.invalid && (password?.dirty || password?.touched) && validar">Campo requerido</mat-hint> -->
 			</div>
 		
 		</div>
 		<br>
-		<div [hidden]="data.id == 0" class="col-12 col-md-6 changePass">
+		<!-- <div [hidden]="data.id == 0" class="col-12 col-md-6 changePass">
 			<span (click)="changePassword(data.email)">Cambiar Contraseña</span>
-		</div>
+		</div> -->
 		<div class="col-12 align-btn">
-			<button (click)="save()" type="button" class="btn btn-primary btn-rounded mobile-btn">Guardar</button>					
+			<button  [disabled]="btnDisables == true" (click)="save()" type="button" class="btn btn-primary btn-rounded mobile-btn">Guardar</button>					
 		</div>
 		
 	</form>

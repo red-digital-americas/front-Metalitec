@@ -119,7 +119,7 @@ export class UsuariosComponent implements OnInit {
         const dialog = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se creo el Usuario"
+            body: "Se creo el Usuario satisfactoriamente"
           },
           width: "350px"
         });
@@ -129,7 +129,7 @@ export class UsuariosComponent implements OnInit {
         const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se actualizo el Usuario"
+            body: "Se actualizo el Usuario satisfactoriamente"
           },
           width: "350px"
         });
