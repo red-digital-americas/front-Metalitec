@@ -40,6 +40,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './layout/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateUserComponent } from './reportes/dialog/create-user/create-user.component';
+import { DialogGeneralMessageComponent } from './reportes/dialog/dialog-general-message/dialog-general-message.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { GeneralConfirmacionComponent } from './reportes/dialog/general-confirmacion/general-confirmacion.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +62,10 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     UsuariosComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateUserComponent,
+    DialogGeneralMessageComponent,
+    GeneralConfirmacionComponent
   ],
   imports: [
     MatMenuModule,
@@ -83,7 +95,10 @@ import { MatIconModule } from '@angular/material/icon';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

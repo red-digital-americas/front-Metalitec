@@ -1,0 +1,30 @@
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+			<h2>{{ header }}</h2>
+		</div>
+		<div class="col-6 align-btn">
+			<mat-icon [mat-dialog-close]="true" style="cursor:pointer">close</mat-icon>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			{{ body }}
+
+		</div>
+	</div>
+</div>
+<br>
+<div class="modal-footer justify-content-end">
+		<button (click)="yes()" type="button" class="btn btn-primary btn-rounded mobile-btn">Si, borrar</button>					
+	<!-- <a (click)="yes()" type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect>Si, borrar
+		<mdb-btn far icon="gem" class="ml-1"></mdb-btn>
+	</a> -->
+	<!-- <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="no()"
+		data-dismiss="modal">No</a> -->
+		<button (click)="no()" type="button" class=" btn btn-light btn-rounded desk-btn"> No </button>	
+</div>

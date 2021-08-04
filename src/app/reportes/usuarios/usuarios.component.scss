@@ -5,8 +5,32 @@
 	align-content: end;
 	text-align: end;
 }
+.color_icon_black{
+	color: black;
+	font-size: 1rem !important;
+	cursor: pointer;
+}
 button{
 	// text-transform: lowercase;
 	text-transform: none;
 
+}
+.desk{
+	font-size: 24px !important;
+}
+.mobile {
+  font-size: 16px !important;
+
+  td, th {
+    padding: .5rem .8rem !important;
+  }
+}
+.desk-btn{
+	font-size: 14px !important;
+}
+.mobile-btn{
+	font-size: 12px !important;
+	mat-icon{
+		font-size: 1rem !important;
+	}
 }

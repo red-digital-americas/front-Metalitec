@@ -1,47 +1,80 @@
 
 <div class="margin">
-	<div class="open_close">
-    <button mat-button id="menu">
-      <mat-icon class="color_icon" id="menu">menu</mat-icon>
-    </button>
-    <span>Usuarios</span>
-  </div>
-  <br>
-  <br>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-6">
-				
-				<p>search</p>
+				<!-- <div class="md-form">
+					<label for="search">Search</label>
+					<input
+						type="text"
+						placeholder="Search" 
+						(keyup)="applyFilter($event)"
+						[(ngModel)]="search"
+						class="form-control"
+						id="search"
+						mdbInput
+					/>
+				</div> -->
 			</div>
-			<div class="col-6 align-btn">
-				<button type="button" class="btn btn-light btn-rounded">Crear usuario</button>
-
-				<!-- <button type="button" class="btn btn-outline-primary btn-rounded">
-					
-				</button> -->
+			<!-- desk -->
+			<div class="col-6 align-btn  d-none d-sm-block ">
+				<button (click)="editUser(0)" type="button" class=" btn btn-light btn-rounded desk-btn"> + Usuario</button>			
+			</div>
+			<!-- mobile -->
+			<div class="col-6 align-btn d-block d-sm-none  ">
+				<button (click)="editUser(0)" type="button" class="btn btn-light btn-rounded mobile-btn">+Usuario</button>					
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12">
+			<!-- desk -->
+			<div class="col-12 d-none d-sm-block desk">
 				<div class="table-responsive p-3">
 					<table class="table table-striped table-hover shadow-4">
 						<thead>
 							<tr>
-								<th [sortBy]="headElements[i]" *ngFor="let head of headElements; let i = index" scope="col">{{head}}
-
-									<icon fas icon="sort"></icon>
+								<th *ngFor="let head of headElements; let i = index"   scope="col">{{head}}
+									<!-- <mat-icon class="color_icon_black">filter_list</mat-icon> -->
 								</th>
-
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let el of elements">
-								<th scope="row">{{el.id}}</th>
-								<td>{{el.Nombre}}</td>
-								<td>{{el.Area}}</td>
-								<td>{{el.Role}}</td>
-								<td>{{el.Accion}}</td>
+							<tr *ngFor="let el of dataUser">
+								<td>{{el.name}} {{ ( el.lastName.length > 20 )? ( el.lastName | slice:0:20 )+ '...' : ( el.lastName ) }}</td>
+								<td>{{ ( el.email.length > 20 )? ( el.email | slice:0:20 )+ '...' : ( el.email ) }}
+								</td>
+								<td>{{getRoleName(el.roleId)}}</td>
+								<td>
+									<mat-icon (click)="editUser(el.id)" class="color_icon_black">edit</mat-icon>
+									<mat-icon (click)="deleteUser(el.id)" class="color_icon_black">delete</mat-icon>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- mobile -->
+			<div class="col-12 d-block d-sm-none mobile">
+				<div class="table-responsive p-1">
+					<table class="table table-striped table-hover shadow-4 w-auto">
+						<thead>
+							<tr>
+								<th class="th-sm"  *ngFor="let head of headElements; let i = index"   scope="col">{{head}}
+									<!-- <mat-icon class="color_icon_black">filter_list</mat-icon> -->
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr  *ngFor="let el of dataUser">
+								<!-- {{el.lastName}} -->
+								<td>{{el.name}} {{ ( el.lastName.length > 2 )? ( el.lastName | slice:0:2 )+ '...' : ( el.lastName ) }}</td>
+								<td>{{ ( el.email.length > 8 )? ( el.email | slice:0:8 )+ '...' : ( el.email ) }}
+								</td>
+								<!-- {{el.email}}   -->
+								<td>{{getRoleName(el.roleId)}}</td>
+								<td>
+									<mat-icon (click)="editUser(el.id)" class="color_icon_black">edit</mat-icon>
+									<mat-icon (click)="deleteUser(el.id)" class="color_icon_black">delete</mat-icon>
+								</td>
 							</tr>
 						</tbody>
 					</table>
