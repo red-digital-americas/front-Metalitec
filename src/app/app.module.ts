@@ -47,7 +47,10 @@ import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { GeneralConfirmacionComponent } from './reportes/dialog/general-confirmacion/general-confirmacion.component';
-
+import { DialogMessageComponent } from './dialog/dialog-message/dialog-message.component';
+import { MatRippleModule } from '@angular/material/core';
+import { DocumentosComponent } from './admin-center/documentos/documentos.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -65,9 +68,16 @@ import { GeneralConfirmacionComponent } from './reportes/dialog/general-confirma
     DashboardComponent,
     CreateUserComponent,
     DialogGeneralMessageComponent,
-    GeneralConfirmacionComponent
+    GeneralConfirmacionComponent,
+    DialogMessageComponent, 
+    DocumentosComponent
   ],
   imports: [
+    NgxFileDropModule,
+    MatRippleModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatMenuModule,
     AvatarModule,
     MatTabsModule,

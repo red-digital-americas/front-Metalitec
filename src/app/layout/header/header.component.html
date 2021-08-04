@@ -1,11 +1,19 @@
 <div class="altura">
-    <div class="align">
+    <div class="align animate__delay-3s animate__animated animate__fadeInLeft">
         <button mat-button id="menu">
             <mat-icon class="color_icon" id="menu">menu</mat-icon>
         </button>
     </div>
 
-    <div class="align_avatar">
-        <ngx-avatar name="Alondra Martinez"></ngx-avatar>
+    <div class="align_avatar cursor">
+        <ngx-avatar name="{{user.nombre}}" [matMenuTriggerFor]="profile"></ngx-avatar>
     </div>
 </div>
+
+<mat-menu #profile="matMenu" class="matmenu_profile">
+    <div class="cursor div_opciones" matRipple (click)="logout()">
+        <span>
+            Logout
+        </span>
+    </div>
+</mat-menu>

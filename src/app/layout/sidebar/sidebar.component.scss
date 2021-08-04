@@ -74,6 +74,14 @@
     }
 }
 
+.filter_white{
+    filter:  brightness(0) invert(1);
+}
+
+.cursor{
+  cursor: pointer;
+}
+
 .color_icon{
   color: white;
   font-size: 20px;
@@ -86,7 +94,18 @@
 }
 
 hr{
-   color: rgba(0,0,0,0.3);
+   color: white;
+}
+
+.hr_matMenu{
+    color: #1F4C7A;
+    padding: 0;
+    margin: 0;
+}
+
+.width_button{
+  width: 100%;
+  text-align: left;
 }
 
 

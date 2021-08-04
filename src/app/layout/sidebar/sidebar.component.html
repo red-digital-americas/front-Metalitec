@@ -1,8 +1,8 @@
 <div class="margin">
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small">
-      <div class="align">
-        <img src="./assets/img/logo.png" alt="" class="img_width">
+      <div class="align cursor" [routerLink]="['/home/dashboard']">
+        <img src="./assets/img/logo.png" alt="" class="img_width filter_white">
       </div>
       <hr>
       <br>
@@ -48,6 +48,11 @@
               <mat-icon class="color_icon">group</mat-icon>
               Usuarios
             </button>
+            <br>
+            <button mat-button [routerLink]="['/home/Upload']" routerLinkActive="router-link-active" class="size top">
+              <mat-icon class="color_icon">content_copy</mat-icon>
+              Carga de Documentos
+            </button>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
@@ -55,8 +60,8 @@
     </div>
 
     <div *ngIf='!menu' id="div_small">
-      <div class="align">
-        <img src="./assets/img/logo.png" alt="" style="width: 60px">
+      <div class="align cursor" [routerLink]="['/home/dashboard']">
+        <img src="./assets/img/logo.png" alt="" style="width: 60px" class="filter_white">
       </div>
       <hr>
       <br>
@@ -66,16 +71,16 @@
       </button>
 
       <mat-menu #menu="matMenu" class="bg_expansion">
-        <button mat-button [routerLink]="['/home/finanzas']" (click)="getFinance()">
+        <button class="width_button" mat-button [routerLink]="['/home/finanzas']" (click)="getFinance()">
           Informes financieros
         </button>
-        <br>
-        <button mat-button [routerLink]="['/home/proveedores']"
+        <hr class="hr_matMenu">
+        <button class="width_button" mat-button [routerLink]="['/home/proveedores']"
           (click)="getSupplierClassification()">
           Clasificación de proveedores
         </button>
-        <br>
-        <button mat-button [routerLink]="['/home/montadores']"
+        <hr class="hr_matMenu" >
+        <button class="width_button" mat-button [routerLink]="['/home/montadores']"
           (click)="getSupplierAssemblers()">
           Proveedores montadores
         </button>
@@ -90,6 +95,10 @@
       <mat-menu #admin="matMenu" class="bg_expansion">
         <button mat-button [routerLink]="['/home/usuarios']">
           Usuarios
+        </button>
+        <hr class="hr_matMenu">
+        <button mat-button [routerLink]="['/home/Upload']">
+          Carga de Documentos
         </button>
       </mat-menu>
 

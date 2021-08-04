@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DocumentosComponent } from './admin-center/documentos/documentos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './login/login.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path:'montadores',
         component: MontadoresComponent
+      },
+      {
+        path:'Upload',
+        component: DocumentosComponent
       },
   ]
   },
