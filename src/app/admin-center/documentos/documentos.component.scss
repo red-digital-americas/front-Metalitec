@@ -1,0 +1,15 @@
+.upload {
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+    width: 100%;
+
+    &_button {
+        height: 40px;
+        background-color: #1f4c7a;
+        border-radius: 25px;
+        width: 100px;
+        color: white;
+        border: none;
+    }
+}

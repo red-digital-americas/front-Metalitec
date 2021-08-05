@@ -1,9 +1,14 @@
-<div class="margin">
+<div class="margin font_letter">
     <div class="open_close">
       <span>Sección para carga de documentos</span>
     </div>
     <br>
     <br>
-    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
-<button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+    
+    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx" #avatar>
+    
+    <div class="upload"> 
+      <button type="button" class="upload_button" (click)="Upload()" >Upload</button>
+    </div>
+    
   </div>

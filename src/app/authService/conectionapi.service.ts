@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -32,5 +32,4 @@ export class ConectionapiService {
   public service_general_get(url:string): Observable<any> {
     return this.http.get(this.url_api + url, { headers: this.headers });
   }
-
 }
