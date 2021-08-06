@@ -78,17 +78,48 @@ export class DocumentosComponent implements OnInit {
             raw: true
           });
           console.log(rows_excel);
+          let claves_json : any;
           for (let i = 0; i < rows_excel.length; i++) {
-            console.log(rows_excel[i]);
-            if (rows_excel[i].idproyecto && rows_excel[i].proyecto && rows_excel[i].ingresos && rows_excel[i].COSTO) {
-              contador_nombre++;
+            claves_json = Object.keys(rows_excel[i])
+            console.log(Object.keys(rows_excel[i]))
+            for (let j = 0; j < claves_json.length; j++) {
+              if (claves_json[i] == "idproyecto") {
+                contador_columnas++;
+              }
+              if (claves_json[i] == "proyecto") {
+                contador_columnas++;
+              }
+              if (claves_json[i] == "ingresos") {
+                contador_columnas++;
+              }
+              if (claves_json[i] == "COSTO") {
+                contador_columnas++;
+              }
+              if (claves_json[i] == "PESO PROYECTO") {
+                contador_columnas++;
+              }
             }
           }
-
-          if(contador_nombre == rows_excel.length){ console.log("El excel contiene las columnas correctas") }else{ console.log("El excel no contiene las columnas correctas") }
-
+          let row_total = rows_excel.length*5;
+          if(contador_columnas == row_total){ console.log("El excel contiene las columnas correctas") }else{ console.log("El excel no contiene las columnas correctas") }
+          let values_json:any;
+          let array_renombrado = [];
           for (let i = 0; i < rows_excel.length; i++) {
-            if (typeof(rows_excel[i].idproyecto) == 'number' && typeof(rows_excel[i].proyecto) == 'string' && typeof(rows_excel[i].ingresos) == "number" && typeof(rows_excel[i].COSTO) == 'number') {
+            values_json = Object.values(rows_excel[i])
+              array_renombrado.push({
+                idproyecto:values_json[0],
+                proyecto:values_json[1],
+                ingresos:values_json[2],
+                costo:values_json[3],
+                pesoProyecto:values_json[4],
+              })
+          }
+
+          console.log(array_renombrado);
+          debugger
+          for (let i = 0; i < array_renombrado.length; i++) {
+            claves_json = Object.keys(array_renombrado[i])
+            if (typeof(array_renombrado[i].idproyecto) == 'number' && typeof(array_renombrado[i].proyecto) == 'string' && typeof(array_renombrado[i].ingresos) == "number" && typeof(array_renombrado[i].costo) == 'number' && typeof(array_renombrado[i].pesoProyecto) == 'number') {
               contador_valor_columnas++;
             }
           }
@@ -97,7 +128,7 @@ export class DocumentosComponent implements OnInit {
 
            console.log(contador_nombre)
            console.log(contador_valor_columnas)
-          if (contador_nombre == rows_excel.length && contador_valor_columnas == rows_excel.length) {
+          if (contador_columnas == row_total && contador_valor_columnas == rows_excel.length) {
             let formData = new FormData();
             formData.append('file', this.avatar.nativeElement.files[0], name_document);
             const headers = new HttpHeaders();
@@ -105,15 +136,25 @@ export class DocumentosComponent implements OnInit {
             headers.append('Accept', 'application/json');
             this.http.post(this.url_api + 'File', formData, {
               headers: headers
-            }).subscribe((response) => {
-              console.log("response; ", response);
-              const dialogRef = this._dialog.open(DialogMessageComponent, {
+            }).subscribe((response:any) => {
+              if(response.success){
+                console.log("response; ", response);
+                const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
                   header: 'Carga de Archivo',
                   body: 'Se ha cargado el archivo exitosamente.'
                 },
-                width: '350px',
-              });
+                  width: '350px',
+                });
+              }else{
+                const dialogRef = this._dialog.open(DialogMessageComponent, {
+                  data: {
+                    header: 'Carga de Archivo',
+                    body: response.message
+                  },
+                    width: '350px',
+                  });
+              }
             }, (error) => {
               console.log(error)
             });
