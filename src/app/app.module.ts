@@ -51,6 +51,7 @@ import { DialogMessageComponent } from './dialog/dialog-message/dialog-message.c
 import { MatRippleModule } from '@angular/material/core';
 import { DocumentosComponent } from './admin-center/documentos/documentos.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     DocumentosComponent
   ],
   imports: [
+    MatSelectModule,
     NgxFileDropModule,
     MatRippleModule,
     MatDialogModule,

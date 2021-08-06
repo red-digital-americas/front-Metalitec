@@ -1,14 +1,28 @@
 <div class="margin font_letter">
-    <div class="open_close">
-      <span class="name_section">Sección para carga de documentos</span>
-    </div>
-    <br>
-    <br>
-    
-    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx" #avatar>
-    
-    <div class="upload"> 
-      <button type="button" class="upload_button" (click)="Upload()" >Upload</button>
-    </div>
-    
+  <div class="open_close">
+    <span class="name_section">Sección para carga de documentos</span>
   </div>
+  <br>
+  <br>
+
+
+  <div class=" col-md-12 col-sm-6">
+    <span>Seleccione el tipo de documento a cargar: </span>
+    <br><br>
+    <mat-form-field appearance="fill" class="width_select">
+      <mat-label>Seleccione documento</mat-label>
+      <mat-select [(ngModel)]="type.documentID">
+        <mat-option *ngFor="let item of caDocuments" [value]="item.id"> {{item.file}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file"
+      accept=".xlsx" #avatar *ngIf="type.documentID != null && type.documentID != undefined && type.documentID != ''">
+  </div>
+
+
+  <div class="upload">
+    <button type="button" class="upload_button" (click)="onSubmit()">Upload</button>
+  </div>
+
+</div>
