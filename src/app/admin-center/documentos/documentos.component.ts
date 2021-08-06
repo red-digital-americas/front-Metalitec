@@ -1,9 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConectionapiService } from 'src/app/authService/conectionapi.service';
 import * as XLSX from 'xlsx';
-import {HttpClient} from '@angular/common/http';
-import {HttpParams} from '@angular/common/http';
-import {HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DialogMessageComponent } from 'src/app/dialog/dialog-message/dialog-message.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -43,7 +42,7 @@ export class DocumentosComponent implements OnInit {
 
   onSubmit() {
     let contador_nombre = 0;
-    let name_document:any;
+    let name_document: any;
     let id_document = null;
     for (let i = 0; i < this.avatar.nativeElement.files.length; i++) {
       for (let j = 0; j < this.caDocuments.length; j++) {
@@ -60,7 +59,8 @@ export class DocumentosComponent implements OnInit {
     switch (id_document) {
       case 1:
         var rows_excel: any;
-        let contador = 0;
+        let contador_columnas = 0;
+        let contador_valor_columnas = 0;
         let fileReader = new FileReader();
         fileReader.onload = (e) => {
           this.arrayBuffer = fileReader.result;
@@ -80,19 +80,24 @@ export class DocumentosComponent implements OnInit {
           console.log(rows_excel);
           for (let i = 0; i < rows_excel.length; i++) {
             console.log(rows_excel[i]);
-            if (rows_excel[i].IdProveedor && rows_excel[i].cantidad && rows_excel[i].razonSocial) {
-              if (rows_excel[i].IdProveedor != "null" && rows_excel[i].cantidad != "null" && rows_excel[i].razonSocial != "null") {
-                contador++;
-              }
+            if (rows_excel[i].idproyecto && rows_excel[i].proyecto && rows_excel[i].ingresos && rows_excel[i].COSTO) {
+              contador_nombre++;
             }
           }
-          if (contador == rows_excel.length) {
-            console.log("CUMPLE CON LAS CARACTERISTICAS DEL EXCEL");
-          } else {
-            console.log("NO CUMPLE CON LAS CARACTERISTICAS DEL EXCEL");
+
+          if(contador_nombre == rows_excel.length){ console.log("El excel contiene las columnas correctas") }else{ console.log("El excel no contiene las columnas correctas") }
+
+          for (let i = 0; i < rows_excel.length; i++) {
+            if (typeof(rows_excel[i].idproyecto) == 'number' && typeof(rows_excel[i].proyecto) == 'string' && typeof(rows_excel[i].ingresos) == "number" && typeof(rows_excel[i].COSTO) == 'number') {
+              contador_valor_columnas++;
+            }
           }
 
-          if (contador_nombre == 1 && contador == rows_excel.length) {
+          if(contador_valor_columnas == rows_excel.length){ console.log("El excel contiene el tipo de dato correcto") }else{ console.log("El excel no contiene el tipo de dato correcto") }
+
+           console.log(contador_nombre)
+           console.log(contador_valor_columnas)
+          if (contador_nombre == rows_excel.length && contador_valor_columnas == rows_excel.length) {
             let formData = new FormData();
             formData.append('file', this.avatar.nativeElement.files[0], name_document);
             const headers = new HttpHeaders();
@@ -116,7 +121,7 @@ export class DocumentosComponent implements OnInit {
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
                 header: 'Carga de Archivo',
-                body: 'El archivo no cumple con el formato correcto por favor verificalo'
+                body: 'El archivo no cumple con el formato correcto por favor verifica el nombre de las columnas y sus valores de cada una de ellas'
               },
               width: '350px',
             });
@@ -130,7 +135,7 @@ export class DocumentosComponent implements OnInit {
     }
 
 
-    if(id_document == null){
+    if (id_document == null) {
       const dialogRef = this._dialog.open(DialogMessageComponent, {
         data: {
           header: 'Carga de Archivo',
