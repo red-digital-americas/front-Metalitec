@@ -78,7 +78,7 @@ export class UsuariosComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      if (result) {
+      if (result == 'si') {
         this.auth.service_general_delete(`User?id=${id}`).subscribe((data) =>{
           console.log('respuesta de eliminacion', data);
           if (data.success) {
@@ -119,7 +119,7 @@ export class UsuariosComponent implements OnInit {
         const dialog = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se creo el Usuario"
+            body: "Se creo el Usuario satisfactoriamente"
           },
           width: "350px"
         });
@@ -129,7 +129,7 @@ export class UsuariosComponent implements OnInit {
         const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se actualizo el Usuario"
+            body: "Se actualizo el Usuario satisfactoriamente"
           },
           width: "350px"
         });

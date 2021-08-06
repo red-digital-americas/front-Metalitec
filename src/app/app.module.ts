@@ -52,6 +52,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { DocumentosComponent } from './admin-center/documentos/documentos.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatSelectModule } from '@angular/material/select';
+import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-password/dialog-change-password.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { MatSelectModule } from '@angular/material/select';
     DialogGeneralMessageComponent,
     GeneralConfirmacionComponent,
     DialogMessageComponent, 
-    DocumentosComponent
+    DocumentosComponent, DialogChangePasswordComponent
   ],
   imports: [
     MatSelectModule,
