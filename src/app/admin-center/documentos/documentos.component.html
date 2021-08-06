@@ -22,7 +22,7 @@
 
 
   <div class="upload">
-    <button type="button" class="upload_button" (click)="onSubmit()">Upload</button>
+    <button [disabled]="disabledbtn == true" type="button" class="upload_button" (click)="onSubmit()">Upload</button>
   </div>
 
 </div>
