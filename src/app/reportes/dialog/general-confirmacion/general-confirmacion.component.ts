@@ -20,11 +20,11 @@ export class GeneralConfirmacionComponent implements OnInit {
   }
   
   yes(){
-    this.dialogRef.close(true);
+    this.dialogRef.close('si');
   }
 
   no(){
-    this.dialogRef.close(false);
+    this.dialogRef.close('no');
   }
 
 

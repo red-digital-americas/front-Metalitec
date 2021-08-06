@@ -78,7 +78,7 @@ export class UsuariosComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      if (result) {
+      if (result == 'si') {
         this.auth.service_general_delete(`User?id=${id}`).subscribe((data) =>{
           console.log('respuesta de eliminacion', data);
           if (data.success) {
