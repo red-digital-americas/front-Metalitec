@@ -124,30 +124,29 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
 
+    /*
     this.auth.service_general_get("SupplierClassification/Materials-Family").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
 
+    /*
     this.auth.service_general_get("SupplierClassification/Purchase-History").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
 
-    this.auth.service_general_get("SupplierClassification/Price-Trend").subscribe(response => {
-      console.log("response: ", response)
-    },(err)=>{
-      console.log("Error: ", err)
-    })
 
     this.auth.service_general_get("SupplierClassification/Price-Trend").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
     this.auth.service_general_get("SupplierClassification/Suppliers").subscribe(response => {
       console.log("response: ", response);
