@@ -34,11 +34,13 @@ export class SidebarComponent implements OnInit {
     })
     */
 
+    /*
     this.auth.service_general_get("FinancialReport/Operating-Results-Summary").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
 
     /*
     this.auth.service_general_get("FinancialReport/Cash-Flow").subscribe(response => {
@@ -54,31 +56,31 @@ export class SidebarComponent implements OnInit {
       console.log("Error: ", err)
     })
 
-    /*
+    
     this.auth.service_general_get("FinancialReport/Main-Account-Evaluation").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
-    */
+    
 
-    /*
+    
     this.auth.service_general_get("FinancialReport/Balance-Sheet-Summary").subscribe(response => {
       console.log("response: ", response)
     },(err)=>{
       console.log("Error: ", err)
     })
-    */
+    
 
-    /*
+    
     this.auth.service_general_get("FinancialReport/Funding-Investment-Operations").subscribe(response => {
       console.log("response: ", response)
       this.loader.hide();
     },(err)=>{
       console.log("Error: ", err)
     })
-    */
-    this.loader.hide();
+    
+   
   }
   //Supplier Assemblers//
   getSupplierAssemblers() {
