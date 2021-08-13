@@ -66,19 +66,21 @@ export class SidebarComponent implements OnInit {
 
     
     this.auth.service_general_get("FinancialReport/Balance-Sheet-Summary").subscribe(response => {
-      console.log("response: ", response)
+      console.log("response: ", response);
+      this.loader.hide();
     },(err)=>{
       console.log("Error: ", err)
     })
     
 
-    
+    /*
     this.auth.service_general_get("FinancialReport/Funding-Investment-Operations").subscribe(response => {
       console.log("response: ", response)
       this.loader.hide();
     },(err)=>{
       console.log("Error: ", err)
     })
+    */
     
    
   }
