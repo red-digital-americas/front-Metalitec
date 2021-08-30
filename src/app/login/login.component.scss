@@ -197,12 +197,14 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #1f4c7a;
+    background: linear-gradient(0deg,#1492D9, #083880)!important;
+    //background-image: linear-gradient(0deg,#4435a6,#9d3292)!important;
 }
 
 
 .wrap-login100 {
-    width: 500px;
+    width: 400px;
+    height: 500px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -265,7 +267,8 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 43px 88px 93px 88px;
+    padding: 0px 50px 65px 50px;
+    margin-top: -15px;
 }
 
 
@@ -413,6 +416,7 @@ input.input100 {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
 .login100-form-btn {
@@ -424,16 +428,14 @@ input.input100 {
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    min-width: 160px;
-    height: 50px;
-    background-color: #1f4c7a;
+    min-width: 150px;
+    height: 40px;
+    background-color: #214781;
     border-radius: 25px;
-
     font-family: Poppins-Regular;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     line-height: 1.2;
-
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -554,7 +556,33 @@ input.input100 {
   margin-top: 3%;
 }
 
+.black{
+  color: #000000;
+}
+
 .alert_valid{
     color: red;
     font-size: 10px;
+}
+
+.iniciar{
+    margin-top: 15px;
+    font-size: 25px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color{
+    color: #214781;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.top{
+    margin-top: 10px;
 }
