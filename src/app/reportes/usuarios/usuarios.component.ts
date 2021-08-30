@@ -28,7 +28,7 @@ export class UsuariosComponent implements OnInit {
   headElements = [ 'Nombre', 'Correo', 'Role', 'Accion'];
   dataUser: any;
   roleData: any[] = [];
-
+// hola
  
   ngOnInit(): void {
     this.loader.show();
