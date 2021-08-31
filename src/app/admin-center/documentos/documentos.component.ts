@@ -213,8 +213,10 @@ export class DocumentosComponent implements OnInit {
                 },
                   width: '350px',
                 });
+                this.progress = false;
               }else{
                 this.porcentaje = 0;
+                this.progress = false;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                   data: {
                     header: 'Carga de Archivo',
@@ -448,8 +450,10 @@ export class DocumentosComponent implements OnInit {
                 },
                   width: '350px',
                 });
+                this.progress = false;
               }else{
                 this.porcentaje = 0;
+                this.progress = false;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                   data: {
                     header: 'Carga de Archivo',
