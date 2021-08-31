@@ -23,12 +23,18 @@
   <br>
   <br>
 
-  <mat-progress-bar mode="determinate" value="{{porcentaje}}">{{porcentaje}}%</mat-progress-bar>
+  <mat-progress-bar *ngIf="progress" mode="determinate" value="{{porcentaje}}"></mat-progress-bar>
+  <br>
+  <div class="barra">
+    <p class="porcentajes" *ngIf="progress">{{porcentaje}}%</p>
+  </div>
+
 
 
   <div class="upload">
     <button *ngIf="file == null && file == undefined && file == ''" type="button" class="upload_button">Upload</button>
-    <button *ngIf="file != null && file != undefined && file != ''" type="button" class="upload_button" (click)="onSubmit()">Upload</button>
+    <button *ngIf="file != null && file != undefined && file != ''" type="button" class="upload_button"
+      (click)="onSubmit()">Upload</button>
   </div>
 
 </div>
