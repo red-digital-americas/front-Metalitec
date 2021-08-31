@@ -31,6 +31,15 @@ export class DocumentosComponent implements OnInit {
     })
   }
 
+  name_document_:any;
+  getName(){
+    for (let j = 0; j < this.caDocuments.length; j++) {
+      if (this.type.documentID == this.caDocuments[j].id) {
+        this.name_document_ = this.caDocuments[j].file;
+      }
+    }
+  }
+
   arrayBuffer: any;
   file: any;
   incomingfile(event: any) {
@@ -42,7 +51,10 @@ export class DocumentosComponent implements OnInit {
   url_api = `${environment.API_URL}`;
   
 
-  onSubmit() {
+  porcentaje = 0;
+  progress = false;
+  async onSubmit() {
+    this.progress = true;
     let contador_nombre = 0;
     let name_document: any;
     let id_document = null;
@@ -55,7 +67,19 @@ export class DocumentosComponent implements OnInit {
         }
       }
     }
-
+    this.porcentaje = 25;
+    await this.getName();
+    if(contador_nombre == 0){
+      this.porcentaje = 0;
+      this.progress = false;
+      const dialogRef = this._dialog.open(DialogMessageComponent, {
+        data: {
+          header: 'Nombre del archivo',
+          body: 'El nombre del archivo no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
+        },
+        width: '500px',
+      });
+    }
     console.log("Contador: ", contador_nombre);
 
     switch (id_document) {
@@ -81,9 +105,23 @@ export class DocumentosComponent implements OnInit {
           });
           console.log(rows_excel);
           let claves_json : any;
+          let columnas = ["idproyecto", "proyecto", "ingresos", "COSTO", "PESO PROYECTO"];
           for (let i = 0; i < rows_excel.length; i++) {
-            claves_json = Object.keys(rows_excel[i])
-            console.log(Object.keys(rows_excel[i]))
+            claves_json = Object.keys(rows_excel[i]);
+            console.log(Object.keys(rows_excel[i]));
+            if(claves_json.length != columnas.length){
+              this.porcentaje = 0;
+              this.progress = false;
+              console.log("columnas incorrectas");
+              const dialogRef = this._dialog.open(DialogMessageComponent, {
+                data: {
+                  header: 'Numero de columnas',
+                  body: 'El número columnas del archivo no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
+                },
+                width: '500px',
+              });
+              break
+            }
             for (let j = 0; j < claves_json.length; j++) {
               if (claves_json[i] == "idproyecto") {
                 contador_columnas++;
@@ -102,8 +140,21 @@ export class DocumentosComponent implements OnInit {
               }
             }
           }
+          this.porcentaje = 50;
           let row_total = rows_excel.length*5;
-          if(contador_columnas == row_total){ console.log("El excel contiene las columnas correctas") }else{ console.log("El excel no contiene las columnas correctas") }
+          if(contador_columnas == row_total){ 
+            console.log("El excel contiene las columnas correctas") 
+          }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
+            const dialogRef = this._dialog.open(DialogMessageComponent, {
+              data: {
+                header: 'Nombre de columnas',
+                body: 'El nombre de las columnas del archivo no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
+              },
+              width: '500px',
+            });
+          }
           let values_json:any;
           let array_renombrado = [];
           for (let i = 0; i < rows_excel.length; i++) {
@@ -126,8 +177,21 @@ export class DocumentosComponent implements OnInit {
             }
           }
 
-          if(contador_valor_columnas == rows_excel.length){ console.log("El excel contiene el tipo de dato correcto") }else{ console.log("El excel no contiene el tipo de dato correcto") }
-
+          if(contador_valor_columnas == rows_excel.length){ 
+            console.log("El excel contiene el tipo de dato correcto") 
+          }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
+            console.log("El excel no contiene el tipo de dato correcto");
+            const dialogRef = this._dialog.open(DialogMessageComponent, {
+              data: {
+                header: 'Tipo de dato en celda',
+                body: 'Existen datos incorrectos en alguna celda del archivo, no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
+              },
+              width: '500px',
+            });
+          }
+          this.porcentaje = 75;
            console.log(contador_nombre)
            console.log(contador_valor_columnas)
           if (contador_columnas == row_total && contador_valor_columnas == rows_excel.length) {
@@ -141,6 +205,7 @@ export class DocumentosComponent implements OnInit {
             }).subscribe((response:any) => {
               if(response.success){
                 console.log("response; ", response);
+                this.porcentaje = 100;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
                   header: 'Carga de Archivo',
@@ -149,6 +214,7 @@ export class DocumentosComponent implements OnInit {
                   width: '350px',
                 });
               }else{
+                this.porcentaje = 0;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                   data: {
                     header: 'Carga de Archivo',
@@ -160,27 +226,17 @@ export class DocumentosComponent implements OnInit {
             }, (error) => {
               console.log(error)
             });
-          } else {
-            const dialogRef = this._dialog.open(DialogMessageComponent, {
-              data: {
-                header: 'Carga de Archivo',
-                body: 'El archivo no cumple con el formato correcto por favor verifica el nombre de las columnas y sus valores de cada una de ellas'
-              },
-              width: '350px',
-            });
           }
-
         }
         fileReader.readAsArrayBuffer(this.file);
         break;
       case 2:
-        this.disabledbtn = true;
         var rows_excel: any;
-        let countColumnsNombre = 0;
-        let contador_valor_columnas2 = 0;
-        let fileReader2 = new FileReader();
-        fileReader2.onload = (e) => {
-          this.arrayBuffer = fileReader2.result;
+        let contador_columnas_ = 0;
+        let contador_valor_columnas_ = 0;
+        let fileReader_ = new FileReader();
+        fileReader_.onload = (e) => {
+          this.arrayBuffer = fileReader_.result;
           var data = new Uint8Array(this.arrayBuffer);
           var arr = new Array();
           console.log("File reader: ", );
@@ -194,207 +250,186 @@ export class DocumentosComponent implements OnInit {
           rows_excel = XLSX.utils.sheet_to_json(worksheet, {
             raw: true
           });
-         
-          // este for identifica que el nombre de las columnas sea igual 
-          for (var key in rows_excel[0]) {
-            console.log(key); 
-            console.log(rows_excel[0][key]); //valor
-            if ((key == "Instalación") ||
-            ( key == 'Nombre') ||
-            key == ('Fase') ||
-            key == ('Descripción') ||
-            key == ('Ubicación') ||
-            key == ('Cambio') ||
-            key == ('Tarea') ||
-            key == ('Total Weight (kg)') ||
-            key == ('Total Time (Horas)') ||
-            key == ('Hrs /  (kg)') ||
-            key == ('Allocated Weight (kg)') ||
-            key == ('Allocated Time (Horas)') ||
-            key == ('Weight (kg)') ||
-            key == ('Time (Horas)') ||
-            key == ('Weight (kg)_1') ||
-            key == ('Time (Horas)_1') ||
-            key == ('Weight (kg)_2') ||
-            key == ('Time (Horas)_2') ||
-            key == ('Weight (kg)_3') ||
-            key == ('Time (Horas)_3') ||
-            key == ('Weight (kg)_4') ||
-            key == ('Time (Horas)_4') ||
-            key == ('Weight (kg)_5') ||
-            key == ('Time (Horas)_5') 
-            )
-            {
-              countColumnsNombre++;
+          console.log(rows_excel);
+          let claves_json : any;
+          let columnas = ["Instalación", "Nombre", "Fase", "Descripción", "Ubicación", "Cambio", "Tarea", "Total Weight (kg)", "Total Time (Horas)", "Hrs /  (kg)", "Allocated Weight (kg)", "Allocated Time (Horas)", "Weight (kg)", "Time (Horas)", "Weight (kg)_1", "Time (Horas)_1", "Weight (kg)_2", "Time (Horas)_2", "Weight (kg)_3", "Time (Horas)_3", "Weight (kg)_4", "Time (Horas)_4", "Weight (kg)_5", "Time (Horas)_5"];
+          for (let i = 0; i < rows_excel.length; i++) {
+            claves_json = Object.keys(rows_excel[i]);
+            console.log(Object.keys(rows_excel[i]));
+            if(claves_json.length != columnas.length){
+              this.porcentaje = 0;
+              this.progress = false;
+              console.log("columnas incorrectas");
+              const dialogRef = this._dialog.open(DialogMessageComponent, {
+                data: {
+                  header: 'Numero de columnas',
+                  body: 'El número columnas del archivo no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
+                },
+                width: '500px',
+              });
+              break
+            }
+            for (let j = 0; j < claves_json.length; j++) {
+              if (claves_json[i] == "Instalación") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Nombre") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Fase") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Descripción") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Ubicación") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Cambio") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Tarea") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Total Weight (kg)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Total Time (Horas)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Hrs /  (kg)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Allocated Weight (kg)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Allocated Time (Horas)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)_1") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)_1") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)_2") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)_2") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)_3") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)_3") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)_4") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)_4") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Weight (kg)_5") {
+                contador_columnas_++;
+              }
+              if (claves_json[i] == "Time (Horas)_5") {
+                contador_columnas_++;
+              }
             }
           }
-          if (countColumnsNombre == 24)
-          {
-            console.log("El excel contiene las columnas correctas")
-          }
-          else {
-            console.log("El excel no contiene las columnas correctas");
+          let row_total = rows_excel.length*24;
+          if(contador_columnas_ == row_total){ 
+            console.log("El excel contiene las columnas correctas") 
+          }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
-                header: 'Error al cargar el archivo',
-                body: '<b>Verifica el nombre de las columnas</b>, ya que no coinciden con el archivo requerido'
+                header: 'Nombre de columnas',
+                body: 'El nombre de las columnas del archivo no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
               },
-              width: '350px',
+              width: '500px',
             });
-            this.disabledbtn = false;
-            return
           }
+          this.porcentaje = 50;
+          let values_json:any;
+          let array_renombrado = [];
           for (let i = 0; i < rows_excel.length; i++) {
-            const element = rows_excel[i];
-            for (var key in element) {
-              console.log(key);
-              console.log(element[key]);
-              if (key == "Instalación") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Nombre") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Fase") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Descripción") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Ubicación") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Cambio") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Tarea") {
-                if (typeof (element[key]) == 'string') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Total Weight (kg)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Total Time (Horas)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Hrs /  (kg)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Allocated Weight (kg)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Allocated Time (Horas)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)_1") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)_1") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)_2") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)_2") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)_3") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)_3") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)_4") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)_4") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Weight (kg)_5") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
-              else if (key == "Time (Horas)_5") {
-                if (typeof (element[key]) == 'number') {
-                  contador_valor_columnas2++;
-                }
-              }
+            values_json = Object.values(rows_excel[i])
+              array_renombrado.push({
+                Instalacion:values_json[0],
+                Nombre:values_json[1],
+                Fase:values_json[2],
+                Descripcion:values_json[3],
+                Ubicacion:values_json[4],
+                Cambio:values_json[5],
+                Tarea:values_json[6],
+                TotalWeight:values_json[7],
+                TotalTime:values_json[8],
+                Hrskg:values_json[9],
+                AllocatedWeightkg:values_json[10],
+                AllocatedTimeHoras:values_json[11],
+                Weightkg:values_json[12],
+                TimeHoras:values_json[13],
+                Weightkg_1:values_json[14],
+                TimeHoras_1:values_json[15],
+                Weightkg_2:values_json[16],
+                TimeHoras_2:values_json[17],
+                Weightkg_3:values_json[18],
+                TimeHoras_3:values_json[19],
+                Weightkg_4:values_json[20],
+                TimeHoras_4:values_json[21],
+                Weightkg_5:values_json[22],
+                TimeHoras_5:values_json[23],
+              })
+          }
+
+          console.log(array_renombrado);
+          debugger
+          for (let i = 0; i < array_renombrado.length; i++) {
+            claves_json = Object.keys(array_renombrado[i])
+            if (typeof(array_renombrado[i].Instalacion) == 'string' && typeof(array_renombrado[i].Nombre) == 'string' 
+            && typeof(array_renombrado[i].Fase) == "string" && typeof(array_renombrado[i].Descripcion) == 'string' 
+            && typeof(array_renombrado[i].Ubicacion) == 'string' && typeof(array_renombrado[i].Cambio) == 'string'
+            && typeof(array_renombrado[i].Tarea) == 'string'  && typeof(array_renombrado[i].TotalWeight) == 'number'  
+            && typeof(array_renombrado[i].TotalTime) == 'number'  && typeof(array_renombrado[i].Hrskg) == 'number'
+            && typeof(array_renombrado[i].AllocatedWeightkg) == 'number' && typeof(array_renombrado[i].AllocatedTimeHoras) == 'number' 
+            && typeof(array_renombrado[i].Weightkg) == 'number'  && typeof(array_renombrado[i].TimeHoras) == 'number' 
+            && typeof(array_renombrado[i].TimeHoras_1) == 'number' && typeof(array_renombrado[i].Weightkg_1) == 'number'
+            && typeof(array_renombrado[i].TimeHoras_2) == 'number' && typeof(array_renombrado[i].Weightkg_2) == 'number'
+            && typeof(array_renombrado[i].TimeHoras_3) == 'number' && typeof(array_renombrado[i].Weightkg_3) == 'number'
+            && typeof(array_renombrado[i].TimeHoras_4) == 'number' && typeof(array_renombrado[i].Weightkg_4) == 'number'
+            && typeof(array_renombrado[i].TimeHoras_5) == 'number' && typeof(array_renombrado[i].Weightkg_5) == 'number'
+            ) {
+              contador_valor_columnas_++;
             }
           }
 
-
-          if (contador_valor_columnas2 == rows_excel.length * 24)
-          {
-            console.log("El excel contiene el tipo de dato correcto")
-          }
-          else {
+          if(contador_valor_columnas_ == rows_excel.length){ 
+            console.log("El excel contiene el tipo de dato correcto") 
+          }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             console.log("El excel no contiene el tipo de dato correcto");
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
-                header: 'Error al cargar el archivo',
-                body: '<b>Verifica los valores de cada columna</b>, ya que no coinciden con el archivo requerido  '
+                header: 'Tipo de dato en celda',
+                body: 'Existen datos incorrectos en alguna celda del archivo, no corresponde al témplate '+ this.name_document_ +', por favor revisa y vuelve a subir.'
               },
-              width: '350px',
+              width: '500px',
             });
-            this.disabledbtn = false;
-            return
-
           }
-          console.log('# de nombres de columnas en xls', countColumnsNombre);
-          console.log('24 columnas default');
-          console.log('# de registros en xls', contador_valor_columnas2);
-          console.log('# de registros que trae el excel', rows_excel.length * 24)
-          if ((countColumnsNombre == 24) && (contador_valor_columnas2 == rows_excel.length * 24)) {
+          this.porcentaje = 75;
+           console.log(contador_nombre)
+           console.log(contador_valor_columnas_)
+          if (contador_columnas_ == row_total && contador_valor_columnas_ == rows_excel.length) {
             let formData = new FormData();
             formData.append('file', this.avatar.nativeElement.files[0], name_document);
             const headers = new HttpHeaders();
@@ -402,44 +437,34 @@ export class DocumentosComponent implements OnInit {
             headers.append('Accept', 'application/json');
             this.http.post(this.url_api + 'File', formData, {
               headers: headers
-            }).subscribe((response) => {
-              console.log("response; ", response);
-              const dialogRef = this._dialog.open(DialogMessageComponent, {
+            }).subscribe((response:any) => {
+              if(response.success){
+                console.log("response; ", response);
+                this.porcentaje = 100;
+                const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
                   header: 'Carga de Archivo',
                   body: 'Se ha cargado el archivo exitosamente.'
                 },
-                width: '350px',
-              });
-              this.disabledbtn = false;
-
+                  width: '350px',
+                });
+              }else{
+                this.porcentaje = 0;
+                const dialogRef = this._dialog.open(DialogMessageComponent, {
+                  data: {
+                    header: 'Carga de Archivo',
+                    body: response.message
+                  },
+                    width: '350px',
+                  });
+              }
             }, (error) => {
               console.log(error)
             });
-          } else {
-            const dialogRef = this._dialog.open(DialogMessageComponent, {
-              data: {
-                header: 'Carga de Archivo',
-                body: 'El archivo no cumple con el formato correcto por favor verifica el nombre de las columnas y sus valores de cada una de ellas'
-              },
-              width: '350px',
-            });
-            this.disabledbtn = false;
           }
         }
-        fileReader2.readAsArrayBuffer(this.file);
+        fileReader_.readAsArrayBuffer(this.file);
         break;
-    }
-    if (id_document == null) {
-      const dialogRef = this._dialog.open(DialogMessageComponent, {
-        data: {
-          header: 'Error al cargar el archivo',
-          body: 'No has seleccionado ningun documento'
-        },
-        width: '350px',
-      });
-      this.disabledbtn = false;
-
     }
   }
 }

@@ -1,11 +1,12 @@
 <div class="limiter  animate__animated animate__fadeInRight font_letter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-form-title bg">
-                <span class="login100-form-title-1">
-
+            <div class="iniciar">
+                <span>
+                   Iniciar Sesión
                 </span>
             </div>
+            <div class="login100-form-title bg"></div>
 
             <!---------------------TABS ANGULAR MATERIAL ------------------------->
             <mat-tab-group [selectedIndex]="selectedIndex" class="login_tabs">
@@ -13,41 +14,43 @@
                 <mat-tab label="First">
                     <form class="login100-form validate-form" [formGroup]="loginFormGroup"
                         (ngSubmit)="onSubmit(loginFormGroup.value)">
-                        <div class="wrap-input100 validate-input m-b-26 flex" data-validate="Username is required">
-                            <input class="input100" type="text"  id="email" placeholder="Username"
+                        <mat-label class="font_letter black top">Usuario</mat-label>
+                        <div class="wrap-input100 validate-input m-b-26 flex top" data-validate="Username is required">
+                            <input class="input100 font_letter" type="text"  id="email" placeholder="Username"
                                 formControlName="email">
                             <mat-icon class="icon-top color_metalitec">account_circle</mat-icon>
                             <span class="focus-input100"></span>
                         </div>
-                        <mat-error *ngIf="!email.valid && email.touched" class="alert_valid">
+                        <mat-error *ngIf="!email.valid && email.touched" class="alert_valid  font_letter">
                             {{ getErrorEmail() }}
                         </mat-error>
 
                         <br>
 
-                        <div class="wrap-input100 validate-input m-b-18 flex" data-validate="Password is required">
-                            <input class="input100" type="{{type_input}}" name="pass" placeholder="Password"
+                        <mat-label class="font_letter black top">Contraseña</mat-label>
+                        <div class="wrap-input100 validate-input m-b-18 flex top" data-validate="Password is required">
+                            <input class="input100 font_letter" type="{{type_input}}" name="pass" placeholder="Password"
                                 formControlName="password" id="password">
                             <mat-icon *ngIf="!eyed" class="icon-top color_metalitec" (click)="changeType(true)">visibility</mat-icon>
                             <mat-icon *ngIf="eyed" class="icon-top color_metalitec" (click)="changeType(false)">visibility_off
                             </mat-icon>
                             <span class="focus-input100"></span>
                         </div>
-                        <mat-error *ngIf="!password.valid && password.touched" class="alert_valid">
-                            Password is required
+                        <mat-error *ngIf="!password.valid && password.touched" class="alert_valid font_letter">
+                            Contraseña requerida
                         </mat-error>
 
-                        <div class="flex-sb-m w-full p-b-30 forgot">
+                        <div class="flex-sb-m w-full p-b-30 forgot font_letter">
                             <div (click)="selectTab(1)">
-                                <a href="#" class="txt1">
-                                    Forgot Password?
+                                <a href="#" class="txt1 font_letter color">
+                                    Olvidé mi contraseña
                                 </a>
                             </div>
                         </div>
 
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" type="submit" [disabled]="!loginFormGroup.valid">
-                                Login
+                        <div class="container-login100-form-btn font_letter">
+                            <button class="login100-form-btn font_letter" type="submit" [disabled]="!loginFormGroup.valid">
+                                Iniciar sesión
                             </button>
                         </div>
                     </form>
@@ -58,27 +61,28 @@
                 <mat-tab label="Second">
                     <form class="login100-form validate-form" [formGroup]="recoverFormPassword"
                         (ngSubmit)="recoverPassword( recoverFormPassword.value )">
+                        <mat-label class="font_letter black top">Usuario</mat-label>
                         <div class="wrap-input100 validate-input m-b-26 flex" data-validate="Username is required">
-                            <input class="input100" type="text" name="username" placeholder="Username"
+                            <input class="input100 font_letter" type="text" name="username" placeholder="Username"
                                 formControlName="email_recover">
                             <mat-icon class="icon-top color_metalitec">account_circle</mat-icon>
                             <span class="focus-input100"></span>
                         </div>
-                        <mat-error *ngIf="!email_recover.valid && email_recover.touched" class="alert_valid">
+                        <mat-error *ngIf="!email_recover.valid && email_recover.touched" class="alert_valid font_letter">
                             {{ getErrorEmailRecover() }}
                           </mat-error>
 
-                        <div class="flex-sb-m w-full p-b-30 forgot">
+                        <div class="flex-sb-m w-full p-b-30 forgot font_letter">
                             <div (click)="selectTab(0)">
-                                <a href="#" class="txt1">
-                                    Login
+                                <a href="#" class="txt1 font_letter color">
+                                    Iniciar sesión
                                 </a>
                             </div>
                         </div>
 
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" [disabled]="!recoverFormPassword.valid">
-                                Send
+                        <div class="container-login100-form-btn font_letter">
+                            <button class="login100-form-btn font_letter" [disabled]="!recoverFormPassword.valid">
+                                Enviar
                             </button>
                         </div>
                     </form>

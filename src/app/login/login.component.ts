@@ -72,13 +72,13 @@ export class LoginComponent implements OnInit {
 
   public getErrorEmail(): any {
     console.log("valid email: ", this.loginFormGroup)
-    return this.loginFormGroup.get('email')?.hasError('required') ? 'Email is required' :
-      this.loginFormGroup.get('email')?.hasError('pattern') ? 'Email format not valid' : '';
+    return this.loginFormGroup.get('email')?.hasError('required') ? 'Email es requerido' :
+      this.loginFormGroup.get('email')?.hasError('pattern') ? 'El formato del email no es válido' : '';
   }
 
   public getErrorEmailRecover(): any {
-    return this.recoverFormPassword.get('email_recover')?.hasError('required') ? 'Email is required' :
-    this.recoverFormPassword.get('email_recover')?.hasError('pattern') ? 'Email format not valid' : '';
+    return this.recoverFormPassword.get('email_recover')?.hasError('required') ? 'Email es requerido' :
+    this.recoverFormPassword.get('email_recover')?.hasError('pattern') ? 'El formato del email no es válido' : '';
   }
 
   onSubmit(form_data: any) {
@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
           this.loader.hide();
           const dialogRef = this._dialog.open(DialogMessageComponent, {
             data: {
-              header: 'Password recovered',
+              header: 'Contraseña',
               body: 'El nuevo password se ha enviado a tu correo.'
             },
             width: '350px'
