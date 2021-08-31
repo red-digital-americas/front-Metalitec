@@ -1,10 +1,7 @@
 <div class="margin font_letter">
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small" class="font_letter">
-      <div class="align cursor" [routerLink]="['/home/dashboard']">
-        <img src="./assets/img/logo.png" alt="" class="img_width filter_white">
-      </div>
-      <hr>
+   
       <br>
 
       <mat-accordion class="menu_expansion" multi>
@@ -51,7 +48,7 @@
             <br>
             <button mat-button [routerLink]="['/home/Upload']" routerLinkActive="router-link-active" class="size font_letter top">
               <mat-icon class="color_icon">content_copy</mat-icon>
-              Carga de Documentos
+              Carga témplate Excel
             </button>
           </div>
         </mat-expansion-panel>
@@ -60,10 +57,10 @@
     </div>
 
     <div *ngIf='!menu' id="div_small" class="font_letter">
-      <div class="align cursor" [routerLink]="['/home/dashboard']">
+      <!--div class="align cursor" [routerLink]="['/home/dashboard']">
         <img src="./assets/img/logo-small.png" alt="" style="width: 60px" class="filter_white">
       </div>
-      <hr>
+      <hr-->
       <br>
 
       <button mat-button [matMenuTriggerFor]="menu">
@@ -98,7 +95,7 @@
         </button>
         <hr class="hr_matMenu">
         <button mat-button [routerLink]="['/home/Upload']" class="font_letter">
-          Carga de Documentos
+          Carga témplate Excel
         </button>
       </mat-menu>
 

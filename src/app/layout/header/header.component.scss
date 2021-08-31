@@ -8,13 +8,17 @@
     justify-content: flex-end;
     margin-right: 20px;
     align-items: center;
-    flex-basis: 50%;
+    flex-basis: 60%;
 }
 
 .align{
     margin-top: 2%;
-    flex-basis: 50%;
+    flex-basis: 22%;
 }
+.align_{
+    flex-basis: 17%;
+}
+
 
 .div_opciones{
     padding: 10%;
@@ -32,4 +36,17 @@
 .hr{
     padding: 0;
     margin: 0;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_img{
+        width: 150px;
+    }
+}
+
+.pointer{
+    cursor: pointer;
 }
