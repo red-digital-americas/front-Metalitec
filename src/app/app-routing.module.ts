@@ -10,6 +10,7 @@ import { ProduccionComponent } from './reportes/produccion/produccion.component'
 import { ProductivadadComponent } from './reportes/productivadad/productivadad.component';
 import { ProveedoresComponent } from './reportes/proveedores/proveedores.component';
 import { UsuariosComponent } from './reportes/usuarios/usuarios.component';
+import { RolesComponent } from './admin-center/roles/roles.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path:'usuarios',
         component: UsuariosComponent
+      },
+      {
+        path:'roles',
+        component: RolesComponent
       },
       {
         path:'produccion',

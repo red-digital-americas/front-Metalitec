@@ -2,41 +2,34 @@ import { Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { ConectionapiService } from 'src/app/authService/conectionapi.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { CreateUserComponent } from './../dialog/create-user/create-user.component';
-import { DialogGeneralMessageComponent } from '../dialog/dialog-general-message/dialog-general-message.component';
+import { DialogAddRoleUserComponent } from './../../dialog/dialog-add-role-user/dialog-add-role-user.component';
+import { DialogMessageComponent } from './../../dialog/dialog-message/dialog-message.component';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { GeneralConfirmacionComponent } from '../dialog/general-confirmacion/general-confirmacion.component';
+import {DialogGeneralConfirmationComponent} from './../../dialog/dialog-general-confirmation/dialog-general-confirmation.component'
 import { LoaderService } from 'src/app/loaderService/loader.service';
 
-
 @Component({
-  selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.scss']
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
+  styleUrls: ['./roles.component.scss']
 })
-export class UsuariosComponent implements OnInit {
-  // @ViewChild('sortuser') sortuser: MatSort;
-  // @ViewChild(MatSort, { static: false }) sort!: MatSort;
+export class RolesComponent implements OnInit {
 
-  // @ViewChild(MatPaginator) paguser: MatPaginator;
-  search: any;
-
-  constructor(public auth: ConectionapiService, public loader: LoaderService, public _dialog: MatDialog) { }
+  constructor( public auth: ConectionapiService, public loader: LoaderService, public _dialog: MatDialog ) { }
 
   headElements = [ 'Nombre', 'Correo', 'Role', 'Accion'];
-  dataUser: any;
+  dataRole: any;
   roleData: any[] = [];
-// hola
- 
+
   ngOnInit(): void {
     this.loader.show();
     this.getCatalog();
     this.auth.service_general_get("User/All").subscribe(response => {
       // let respUser = response.result;
       console.log("user: ", response.result);
-      this.dataUser = response.result;
+      this.dataRole = response.result;
       this.loader.hide();
     },(err)=>{
       console.log("Error: ", err);
@@ -62,19 +55,14 @@ export class UsuariosComponent implements OnInit {
   applyFilter(event: Event) {
     console.log(event, 'estas buscando');
     const filterValue = (event.target as HTMLInputElement).value;
-      this.dataUser.filter = filterValue.trim().toLowerCase();
-    
+      this.dataRole.filter = filterValue.trim().toLowerCase();
   }
-  
-  
-  
-  deleteUser(id : number) {
-    const dialogRef = this._dialog.open(GeneralConfirmacionComponent, {
+  deleteRole(id : number) {
+    const dialogRef = this._dialog.open(DialogGeneralConfirmationComponent, {
       data: {
         header: "Confirmación para borrar",
-        body: "¿Estas seguro de borrar el usuario?"
+        body: "¿Estas seguro de borrar este Rol?"
       },
-      // width: "350px"
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
@@ -82,66 +70,63 @@ export class UsuariosComponent implements OnInit {
         this.auth.service_general_delete(`User?id=${id}`).subscribe((data) =>{
           console.log('respuesta de eliminacion', data);
           if (data.success) {
-            const dialog = this._dialog.open(DialogGeneralMessageComponent, {
+            const dialog = this._dialog.open(DialogMessageComponent, {
               data: {
                 header: "Exito",
-                body: 'El Usuario se borro correctamente'
+                body: 'El Rol se borro correctamente'
               },
-              // width: "350px"
             });
             this.ngOnInit();
           }
         }, (error) => {
             console.error('error con el delete', error);
-            const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
+            const dialog2 = this._dialog.open(DialogMessageComponent, {
             data: {
               header: "Atención",
-              body: `El Usuario no se puede eliminar por que esta en uso`
+              body: `Este Rol no se puede eliminar, por que esta en uso`
             },
-            // width: "350px"
             });
             this.ngOnInit();
         })
       }
     });
   }
-  editUser(id : number) {
+  editRole(id : number) {
     console.log(id);
-    console.log('abrir modal currencies');
-    const dialogRef = this._dialog.open(CreateUserComponent, {
+    console.log('abrir modal rol');
+    const dialogRef = this._dialog.open(DialogAddRoleUserComponent, {
       data: {
         id: id,
       },
-      // width: "30%",
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === 1){
-        const dialog = this._dialog.open(DialogGeneralMessageComponent, {
+        const dialog = this._dialog.open(DialogMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se creo el Usuario satisfactoriamente"
+            body: "Se creo el Rol satisfactoriamente"
           },
-          width: "350px"
+          // width: "350px"
         });
         this.ngOnInit();
       }
       if(result === 2){
-        const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
+        const dialog2 = this._dialog.open(DialogMessageComponent, {
           data: {
             header: "Exito",
-            body: "Se actualizo el Usuario satisfactoriamente"
+            body: "Se actualizo el Rol satisfactoriamente"
           },
-          width: "350px"
+          // width: "350px"
         });
         this.ngOnInit();
       }
       if (result === 3) {
-        const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
+        const dialog2 = this._dialog.open(DialogMessageComponent, {
           data: {
             header: "Error",
             body: "error"
           },
-          width: "350px"
+          // width: "350px"
         });
         this.ngOnInit();
 
@@ -151,3 +136,4 @@ export class UsuariosComponent implements OnInit {
   }
 
 }
+
