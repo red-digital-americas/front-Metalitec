@@ -1,0 +1,24 @@
+
+
+<div class="container font_letter">
+	<div class="row">
+		<div class="col-6">
+			<h2>{{ header }}</h2>
+		</div>
+		<div class="col-6 align-btn">
+			<mat-icon [mat-dialog-close]="true" style="cursor:pointer">close</mat-icon>
+		</div>
+	</div>
+</div>
+<div class="container font_letter">
+	<div class="row">
+		<div class="col-12">
+      <span [innerHTML]="body"></span>
+		</div>
+	</div>
+</div>
+<br>
+<div class="modal-footer justify-content-end">
+		<button style="background: #1F4C7A;" (click)="yes()" type="button" class="btn btn-primary btn-rounded mobile-btn">Si, borrar</button>		
+		<button (click)="no()" type="button" class=" btn btn-light btn-rounded desk-btn"> No </button>	
+</div>

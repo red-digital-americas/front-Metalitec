@@ -53,6 +53,9 @@ import { DocumentosComponent } from './admin-center/documentos/documentos.compon
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatSelectModule } from '@angular/material/select';
 import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-password/dialog-change-password.component';
+import { RolesComponent } from './admin-center/roles/roles.component';
+import { DialogAddRoleUserComponent } from './dialog/dialog-add-role-user/dialog-add-role-user.component';
+import { DialogGeneralConfirmationComponent } from './dialog/dialog-general-confirmation/dialog-general-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,7 @@ import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-p
     DialogGeneralMessageComponent,
     GeneralConfirmacionComponent,
     DialogMessageComponent, 
-    DocumentosComponent, DialogChangePasswordComponent
+    DocumentosComponent, DialogChangePasswordComponent, RolesComponent, DialogAddRoleUserComponent, DialogGeneralConfirmationComponent
   ],
   imports: [
     MatSelectModule,

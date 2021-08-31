@@ -1,0 +1,91 @@
+
+<div class="margin font_letter">
+	<div class="open_close">
+		<span class="name_section">Administración de Roles</span>
+	  </div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-6">
+				<!-- <div class="md-form">
+					<label for="search">Search</label>
+					<input
+						type="text"
+						placeholder="Search" 
+						(keyup)="applyFilter($event)"
+						[(ngModel)]="search"
+						class="form-control"
+						id="search"
+						mdbInput
+					/>
+				</div> -->
+			</div>
+			<!-- desk -->
+			<div class="col-6 align-btn  d-none d-sm-block ">
+				<button (click)="editRole(0)" type="button" class=" btn btn-light btn-rounded desk-btn"> + Role</button>			
+			</div>
+			<!-- mobile -->
+			<div class="col-6 align-btn d-block d-sm-none  ">
+				<button (click)="editRole(0)" type="button" class="btn btn-light btn-rounded mobile-btn">+Role</button>					
+			</div>
+		</div>
+		<div class="row">
+			<!-- desk -->
+			<div class="col-12 d-none d-sm-block desk">
+				<div class="table-responsive p-3">
+					<table class="table table-striped table-hover shadow-4">
+						<thead>
+							<tr>
+								<th *ngFor="let head of headElements; let i = index"   scope="col">{{head}}
+									<!-- <mat-icon class="color_icon_black">filter_list</mat-icon> -->
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let el of dataRole">
+								<td>{{el.name}} {{ ( el.lastName.length > 20 )? ( el.lastName | slice:0:20 )+ '...' : ( el.lastName ) }}</td>
+								<td>{{ ( el.email.length > 20 )? ( el.email | slice:0:20 )+ '...' : ( el.email ) }}
+								</td>
+								<td>{{getRoleName(el.roleId)}}</td>
+								<td>
+									<mat-icon (click)="editRole(el.id)" class="color_icon_black">edit</mat-icon>
+									<mat-icon (click)="deleteRole(el.id)" class="color_icon_black">delete</mat-icon>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- mobile -->
+			<div class="col-12 d-block d-sm-none mobile">
+				<div class="table-responsive p-1">
+					<table class="table table-striped table-hover shadow-4 w-auto">
+						<thead>
+							<tr>
+								<th class="th-sm"  *ngFor="let head of headElements; let i = index"   scope="col">{{head}}
+									<!-- <mat-icon class="color_icon_black">filter_list</mat-icon> -->
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr  *ngFor="let el of dataRole">
+								<!-- {{el.lastName}} -->
+								<td>{{el.name}} {{ ( el.lastName.length > 2 )? ( el.lastName | slice:0:2 )+ '...' : ( el.lastName ) }}</td>
+								<td>{{ ( el.email.length > 8 )? ( el.email | slice:0:8 )+ '...' : ( el.email ) }}
+								</td>
+								<!-- {{el.email}}   -->
+								<td>{{getRoleName(el.roleId)}}</td>
+								<td>
+									<mat-icon (click)="editRole(el.id)" class="color_icon_black">edit</mat-icon>
+									<mat-icon (click)="deleteRole(el.id)" class="color_icon_black">delete</mat-icon>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+			

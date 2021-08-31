@@ -1,0 +1,151 @@
+<div class="container font_letter">
+	<div class="row">
+		<div class=" col-6">
+			<h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id == 0">Crear Rol</h2>
+    	<h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id != 0">Actualizar Rol</h2>
+		</div>
+		<div class="col-6 align-btn">
+			<mat-icon [mat-dialog-close]="true" style="cursor:pointer">close</mat-icon>
+		</div>
+	</div>
+</div>
+<br><br>
+
+<div class="container font_letter">
+	<form [formGroup]="validationForm">
+		<div class="row m-3">
+			<div class="col-12 col-md-6  align-btn">
+				<mdb-form-control>
+					<input required [(ngModel)]="data.name" [formControl]="name"  mdbInput type="text" id="name" class="form-control" />
+					<label mdbLabel class="form-label" for="name">Role *</label>	
+				</mdb-form-control>
+				<mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="name.invalid  && validar">Campo requerido</mat-hint>
+				<!-- && (name?.dirty || name?.touched) -->
+			</div>
+		</div>
+		<div class="row m-3">
+			<div class="col-12">
+				<mdb-form-control>
+
+          <textarea  [(ngModel)]="data.description"
+           class="form-control"
+            id="textAreaExample" rows="4"></textarea>
+          <label class="form-label" for="textAreaExample">Descripción</label>
+					<!-- <input  [(ngModel)]="data.description"  [formControl]="description"  mdbInput type="text" id="apellidoM" class="form-control" />
+					<label mdbLabel class="form-label" for="apellidoM">Descripcion</label> -->
+				</mdb-form-control>
+			</div>
+		</div>
+		<br>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+
+            <div class="col-3"
+                           [style.background]="myArr[1].color">
+                           <span class="text-mini gray_05">Menu</span></div>
+        
+            <div class="col-2"
+                           [style.background]="myArr[1].color"><span class="text-mini gray_05">SubMenu</span></div>
+            <div class="col-2"
+                           [style.background]="myArr[1].color"><span class="text-mini gray_05">Section</span></div>
+            <div class="col-1"
+                           [style.background]="myArr[1].color">
+              <span class="text-mini gray_05">Reading</span>
+            </div>
+            <div class="col-1"
+                           [style.background]="myArr[1].color">
+              <span class="text-mini gray_05">Writing</span>
+            </div>
+            <div class="col-1"
+                           [style.background]="myArr[1].color">
+              <span class="text-mini gray_05">Editing</span>
+            </div>
+            <div class="col-1"
+                           [style.background]="myArr[1].color">
+              <span class="text-mini gray_05">Deleting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngFor="let permission of myArr; let i=index" class="col-12">
+          <div class="row">
+            <div class="col-3"
+                           [rowspan]="permission.rows"
+                           [style.background]="permission.color"><span class="text-mini gray_05">{{permission.menu}}</span></div>
+            <div class="col-9" *ngFor="let p of permission.permissionssubmenu;">
+              <div class="row">
+                <div class="col-3"
+                              [rowspan]="1"
+                              [style.background]="permission.color"><span class="text-mini gray_05">{{p.submenu}}</span></div>
+                <div class="col-2"
+                              [rowspan]="1"
+                              [style.background]="permission.color"><span class="text-mini gray_05">{{p.seccion}}</span></div>
+                <div class="col-1"
+                              [rowspan]="1"
+                              [style.background]="permission.color">
+                                <input
+                                  [(ngModel)]="p.reading"
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckChecked"
+                                  checked
+                                />
+                </div>
+                <div class="col-1"
+                              [rowspan]="1"
+                              [style.background]="permission.color">
+                              <input
+                                  [(ngModel)]="p.writing"
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckChecked"
+                                  checked
+                                />
+                </div>
+                <div class="col-1"
+                              [rowspan]="1"
+                              [style.background]="permission.color">
+                              <input
+                                  [(ngModel)]="p.editing"
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckChecked"
+                                  checked
+                                />
+                </div>
+                <div class="col-1"
+                              [rowspan]="1"
+                              [style.background]="permission.color">
+                              <input
+                                  [(ngModel)]="p.deleting"
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  value=""
+                                  id="flexCheckChecked"
+                                  checked
+                                />
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+		
+		<div class="col-12 align-btn">
+			<button style="background: #1F4C7A;"  [disabled]="btnDisables == true" (click)="save()" type="button" class="btn btn-primary btn-rounded mobile-btn">Guardar</button>					
+		</div>
+		
+	</form>
+</div>
