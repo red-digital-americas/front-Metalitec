@@ -53,7 +53,7 @@ import { DocumentosComponent } from './admin-center/documentos/documentos.compon
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatSelectModule } from '@angular/material/select';
 import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-password/dialog-change-password.component';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +75,7 @@ import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-p
     DocumentosComponent, DialogChangePasswordComponent
   ],
   imports: [
+    MatProgressBarModule,
     MatSelectModule,
     NgxFileDropModule,
     MatRippleModule,

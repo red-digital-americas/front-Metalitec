@@ -51,7 +51,10 @@ export class DocumentosComponent implements OnInit {
   url_api = `${environment.API_URL}`;
   
 
+  porcentaje = 0;
+  progress = false;
   async onSubmit() {
+    this.progress = true;
     let contador_nombre = 0;
     let name_document: any;
     let id_document = null;
@@ -64,8 +67,11 @@ export class DocumentosComponent implements OnInit {
         }
       }
     }
+    this.porcentaje = 25;
     await this.getName();
     if(contador_nombre == 0){
+      this.porcentaje = 0;
+      this.progress = false;
       const dialogRef = this._dialog.open(DialogMessageComponent, {
         data: {
           header: 'Nombre del archivo',
@@ -104,6 +110,8 @@ export class DocumentosComponent implements OnInit {
             claves_json = Object.keys(rows_excel[i]);
             console.log(Object.keys(rows_excel[i]));
             if(claves_json.length != columnas.length){
+              this.porcentaje = 0;
+              this.progress = false;
               console.log("columnas incorrectas");
               const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
@@ -132,10 +140,13 @@ export class DocumentosComponent implements OnInit {
               }
             }
           }
+          this.porcentaje = 50;
           let row_total = rows_excel.length*5;
           if(contador_columnas == row_total){ 
             console.log("El excel contiene las columnas correctas") 
           }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
                 header: 'Nombre de columnas',
@@ -169,6 +180,8 @@ export class DocumentosComponent implements OnInit {
           if(contador_valor_columnas == rows_excel.length){ 
             console.log("El excel contiene el tipo de dato correcto") 
           }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             console.log("El excel no contiene el tipo de dato correcto");
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
@@ -178,7 +191,7 @@ export class DocumentosComponent implements OnInit {
               width: '500px',
             });
           }
-
+          this.porcentaje = 75;
            console.log(contador_nombre)
            console.log(contador_valor_columnas)
           if (contador_columnas == row_total && contador_valor_columnas == rows_excel.length) {
@@ -192,6 +205,7 @@ export class DocumentosComponent implements OnInit {
             }).subscribe((response:any) => {
               if(response.success){
                 console.log("response; ", response);
+                this.porcentaje = 100;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
                   header: 'Carga de Archivo',
@@ -200,6 +214,7 @@ export class DocumentosComponent implements OnInit {
                   width: '350px',
                 });
               }else{
+                this.porcentaje = 0;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                   data: {
                     header: 'Carga de Archivo',
@@ -215,13 +230,13 @@ export class DocumentosComponent implements OnInit {
         }
         fileReader.readAsArrayBuffer(this.file);
         break;
-        case 2:
+      case 2:
         var rows_excel: any;
         let contador_columnas_ = 0;
         let contador_valor_columnas_ = 0;
         let fileReader_ = new FileReader();
         fileReader_.onload = (e) => {
-          this.arrayBuffer = fileReader.result;
+          this.arrayBuffer = fileReader_.result;
           var data = new Uint8Array(this.arrayBuffer);
           var arr = new Array();
           console.log("File reader: ", );
@@ -242,6 +257,8 @@ export class DocumentosComponent implements OnInit {
             claves_json = Object.keys(rows_excel[i]);
             console.log(Object.keys(rows_excel[i]));
             if(claves_json.length != columnas.length){
+              this.porcentaje = 0;
+              this.progress = false;
               console.log("columnas incorrectas");
               const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
@@ -331,6 +348,8 @@ export class DocumentosComponent implements OnInit {
           if(contador_columnas_ == row_total){ 
             console.log("El excel contiene las columnas correctas") 
           }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
                 header: 'Nombre de columnas',
@@ -339,6 +358,7 @@ export class DocumentosComponent implements OnInit {
               width: '500px',
             });
           }
+          this.porcentaje = 50;
           let values_json:any;
           let array_renombrado = [];
           for (let i = 0; i < rows_excel.length; i++) {
@@ -388,13 +408,15 @@ export class DocumentosComponent implements OnInit {
             && typeof(array_renombrado[i].TimeHoras_4) == 'number' && typeof(array_renombrado[i].Weightkg_4) == 'number'
             && typeof(array_renombrado[i].TimeHoras_5) == 'number' && typeof(array_renombrado[i].Weightkg_5) == 'number'
             ) {
-              contador_valor_columnas++;
+              contador_valor_columnas_++;
             }
           }
 
-          if(contador_valor_columnas == rows_excel.length){ 
+          if(contador_valor_columnas_ == rows_excel.length){ 
             console.log("El excel contiene el tipo de dato correcto") 
           }else{ 
+            this.porcentaje = 0;
+            this.progress = false;
             console.log("El excel no contiene el tipo de dato correcto");
             const dialogRef = this._dialog.open(DialogMessageComponent, {
               data: {
@@ -404,7 +426,7 @@ export class DocumentosComponent implements OnInit {
               width: '500px',
             });
           }
-
+          this.porcentaje = 75;
            console.log(contador_nombre)
            console.log(contador_valor_columnas_)
           if (contador_columnas_ == row_total && contador_valor_columnas_ == rows_excel.length) {
@@ -418,6 +440,7 @@ export class DocumentosComponent implements OnInit {
             }).subscribe((response:any) => {
               if(response.success){
                 console.log("response; ", response);
+                this.porcentaje = 100;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                 data: {
                   header: 'Carga de Archivo',
@@ -426,6 +449,7 @@ export class DocumentosComponent implements OnInit {
                   width: '350px',
                 });
               }else{
+                this.porcentaje = 0;
                 const dialogRef = this._dialog.open(DialogMessageComponent, {
                   data: {
                     header: 'Carga de Archivo',

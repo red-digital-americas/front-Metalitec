@@ -20,6 +20,11 @@
       accept=".xlsx" #avatar *ngIf="type.documentID != null && type.documentID != undefined && type.documentID != ''">
   </div>
 
+  <br>
+  <br>
+
+  <mat-progress-bar mode="determinate" value="{{porcentaje}}">{{porcentaje}}%</mat-progress-bar>
+
 
   <div class="upload">
     <button *ngIf="file == null && file == undefined && file == ''" type="button" class="upload_button">Upload</button>
