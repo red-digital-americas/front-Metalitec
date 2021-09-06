@@ -12,20 +12,19 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="title_expansion font_letter">
-            <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active"
-              (click)="getFinance()" class="size top font_letter">
+            <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active" class="size top font_letter">
               <mat-icon class="color_icon">attach_money</mat-icon>
               Informes financieros
             </button>
             <br>
             <button mat-button [routerLink]="['/home/proveedores']" routerLinkActive="router-link-active"
-              class="size top font_letter" (click)="getSupplierClassification()">
+              class="size top font_letter">
               <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
               Clasificación de proveedores
             </button>
             <br>
             <button mat-button [routerLink]="['/home/montadores']" routerLinkActive="router-link-active"
-              class="size font_letter top" (click)="getSupplierAssemblers()">
+              class="size font_letter top">
               <mat-icon class="color_icon">local_shipping</mat-icon>
               Proveedores montadores
             </button>
@@ -73,17 +72,16 @@
       </button>
 
       <mat-menu #menu="matMenu" class="bg_expansion">
-        <button class="width_button font_letter" mat-button [routerLink]="['/home/finanzas']" (click)="getFinance()">
+        <button class="width_button font_letter" mat-button [routerLink]="['/home/finanzas']">
           Informes financieros
         </button>
         <hr class="hr_matMenu">
         <button class="width_button font_letter" mat-button [routerLink]="['/home/proveedores']"
-          (click)="getSupplierClassification()">
+          >
           Clasificación de proveedores
         </button>
         <hr class="hr_matMenu" >
-        <button class="width_button font_letter" mat-button [routerLink]="['/home/montadores']"
-          (click)="getSupplierAssemblers()">
+        <button class="width_button font_letter" mat-button [routerLink]="['/home/montadores']">
           Proveedores montadores
         </button>
       </mat-menu>
