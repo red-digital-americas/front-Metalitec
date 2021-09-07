@@ -1,151 +1,179 @@
-<div class="container font_letter">
-	<div class="row">
-		<div class=" col-6">
-			<h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id == 0">Crear Rol</h2>
-    	<h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id != 0">Actualizar Rol</h2>
-		</div>
-		<div class="col-6 align-btn">
-			<mat-icon [mat-dialog-close]="true" style="cursor:pointer">close</mat-icon>
-		</div>
-	</div>
-</div>
-<br><br>
-
-<div class="container font_letter">
-	<form [formGroup]="validationForm">
-		<div class="row m-3">
-			<div class="col-12 col-md-6  align-btn">
-				<mdb-form-control>
-					<input required [(ngModel)]="data.name" [formControl]="name"  mdbInput type="text" id="name" class="form-control" />
-					<label mdbLabel class="form-label" for="name">Role *</label>	
-				</mdb-form-control>
-				<mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="name.invalid  && validar">Campo requerido</mat-hint>
-				<!-- && (name?.dirty || name?.touched) -->
-			</div>
-		</div>
-		<div class="row m-3">
-			<div class="col-12">
-				<mdb-form-control>
-
-          <textarea  [(ngModel)]="data.description"
-           class="form-control"
-            id="textAreaExample" rows="4"></textarea>
-          <label class="form-label" for="textAreaExample">Descripción</label>
-					<!-- <input  [(ngModel)]="data.description"  [formControl]="description"  mdbInput type="text" id="apellidoM" class="form-control" />
-					<label mdbLabel class="form-label" for="apellidoM">Descripcion</label> -->
-				</mdb-form-control>
-			</div>
-		</div>
-		<br>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="row">
-
-            <div class="col-3"
-                           [style.background]="myArr[1].color">
-                           <span class="text-mini gray_05">Menu</span></div>
-        
-            <div class="col-2"
-                           [style.background]="myArr[1].color"><span class="text-mini gray_05">SubMenu</span></div>
-            <div class="col-2"
-                           [style.background]="myArr[1].color"><span class="text-mini gray_05">Section</span></div>
-            <div class="col-1"
-                           [style.background]="myArr[1].color">
-              <span class="text-mini gray_05">Reading</span>
-            </div>
-            <div class="col-1"
-                           [style.background]="myArr[1].color">
-              <span class="text-mini gray_05">Writing</span>
-            </div>
-            <div class="col-1"
-                           [style.background]="myArr[1].color">
-              <span class="text-mini gray_05">Editing</span>
-            </div>
-            <div class="col-1"
-                           [style.background]="myArr[1].color">
-              <span class="text-mini gray_05">Deleting</span>
-            </div>
-          </div>
-        </div>
+<div class="scroll">
+  <div class="container font_letter">
+    <div class="row">
+      <div class=" col-6">
+        <h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id == 0">Crear Rol</h2>
+        <h2 mat-dialog-title class="modal-form__title" *ngIf="this.data.id != 0">Actualizar Rol</h2>
+      </div>
+      <div class="col-6 align-btn">
+        <mat-icon [mat-dialog-close]="true" style="cursor:pointer">close</mat-icon>
       </div>
     </div>
+  </div>
+  <br><br>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div *ngFor="let permission of myArr; let i=index" class="col-12">
-          <div class="row">
-            <div class="col-3"
-                           [rowspan]="permission.rows"
-                           [style.background]="permission.color"><span class="text-mini gray_05">{{permission.menu}}</span></div>
-            <div class="col-9" *ngFor="let p of permission.permissionssubmenu;">
-              <div class="row">
-                <div class="col-3"
-                              [rowspan]="1"
-                              [style.background]="permission.color"><span class="text-mini gray_05">{{p.submenu}}</span></div>
-                <div class="col-2"
-                              [rowspan]="1"
-                              [style.background]="permission.color"><span class="text-mini gray_05">{{p.seccion}}</span></div>
-                <div class="col-1"
-                              [rowspan]="1"
-                              [style.background]="permission.color">
-                                <input
-                                  [(ngModel)]="p.reading"
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="flexCheckChecked"
-                                  checked
-                                />
-                </div>
-                <div class="col-1"
-                              [rowspan]="1"
-                              [style.background]="permission.color">
-                              <input
-                                  [(ngModel)]="p.writing"
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="flexCheckChecked"
-                                  checked
-                                />
-                </div>
-                <div class="col-1"
-                              [rowspan]="1"
-                              [style.background]="permission.color">
-                              <input
-                                  [(ngModel)]="p.editing"
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="flexCheckChecked"
-                                  checked
-                                />
-                </div>
-                <div class="col-1"
-                              [rowspan]="1"
-                              [style.background]="permission.color">
-                              <input
-                                  [(ngModel)]="p.deleting"
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="flexCheckChecked"
-                                  checked
-                                />
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container font_letter">
+    <div class="row m-3">
+      <div class="col-12 col-md-6 mb-2">
+        <mdb-form-control>
+          <input required [(ngModel)]="data.name" 
+          mdbInput type="text" id="name" class="form-control" />
+          <label mdbLabel class="form-label" for="name">Role *</label>	
+        </mdb-form-control>
+        <mat-hint style="color:#e91e63; font-size: 12px;" *ngIf="name.invalid  && validar">Campo requerido</mat-hint>
+      </div>
+      <br>
+      <div class="col-12 mt-5">
+        <mdb-form-control>
+          <textarea 
+            mdbInput
+            [(ngModel)]="data.description"
+            class="form-control"
+            id="textAreaExample" rows="3">
+          </textarea>
+          <label mdbLabel class="form-label" for="textAreaExample">
+            Descripción
+          </label>
+          <!-- <input  [(ngModel)]="data.description"  [formControl]="description"  mdbInput type="text" id="apellidoM" class="form-control" />
+          <label mdbLabel class="form-label" for="apellidoM">Descripcion</label> -->
+        </mdb-form-control>
       </div>
     </div>
-		
-		<div class="col-12 align-btn">
-			<button style="background: #1F4C7A;"  [disabled]="btnDisables == true" (click)="save()" type="button" class="btn btn-primary btn-rounded mobile-btn">Guardar</button>					
-		</div>
-		
-	</form>
+    <br>
+    <div class="row selectAll" >
+      <div class="col-12" *ngIf="selectAll == false">
+        <span (click)="AllRole()"
+        class="cursor-pointer">
+        Seleccionar todo
+      </span>
+      </div>
+      <div class="col-12" *ngIf="selectAll == true">
+        <span (click)="unSelectRole()"
+        class="cursor-pointer">
+        Deseleccionar todo
+      </span>
+      </div>
+    </div>
+    <!-- aqui -->
+    <div class="d-flex" style="background-color: rgb(249, 249, 249);">
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+            <span class="text-mini gray_05">Perfil</span>
+        </div>
+    
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+            <span class="text-mini gray_05">Administrador</span>
+          </div>
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+          <span class="text-mini gray_05">001- Reporte de producción</span>
+        </div>
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+          <span class="text-mini gray_05">002- Informes finacieros</span>
+        </div>
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+            <span class="text-mini gray_05">003- Clasif. de trabajadores</span>
+        </div>
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+          <span class="text-mini gray_05">004- Clasif. de proveedores</span>
+        </div>
+        <div class="col alingCheck"
+          [style.background]="myArr[1].color">
+            <span class="text-mini gray_05">005- Prov. montadores</span>
+        </div>
+    </div>
+    
+    <div *ngFor="let permission of myArr; let i=index" 
+    class="d-flex"
+    [style.background]="permission.color"
+    >
+        <div 
+          class=" col-2 " [style.background]="permission.color"
+        >
+          <span class="text-mini gray_05">{{permission.perfil}}
+          </span>
+        </div>
+        <!-- *ngFor="let p of permission.permissionssubmenu;" -->
+        <!-- <div class="d-flex"> -->
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].administrador"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].produccion"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].financieros"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].trabajadores"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].proveedores"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+            <div class="col alingCheck"
+              [style.background]="permission.color">
+                <input
+                  [(ngModel)]="permission.permissionssubmenu[0].montadores"
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  checked
+                />
+            </div>
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+      
+    <br><br>
+    
+    <div class="col-12 align-btn">
+      <button style="background: #1F4C7A;"  [disabled]="btnDisables == true" (click)="save()" type="button" class="btn btn-primary btn-rounded mobile-btn">Guardar</button>					
+    </div>
+  </div>
 </div>

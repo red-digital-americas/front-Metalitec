@@ -16,16 +16,18 @@ import { LoaderService } from 'src/app/loaderService/loader.service';
 export class DialogAddRoleUserComponent implements OnInit {
 
   public permissions: PermissionsMenu[] = [];
-  public myArr: any [] = [];
-  permissionsOperation: PermissionsSubmenu[] = [];
-  permissionsPartner: PermissionsSubmenu[] = [];
-  permissionsFinace: PermissionsSubmenu[] = [];
-  permissionsAdmin: PermissionsSubmenu[] = [];
+
+  permissionsDireccionGeneral: PermissionsSubmenu[] = [];
+  permissionsDireccionOperaciones: PermissionsSubmenu[] = [];
+  permissionsGerenteFinanzas: PermissionsSubmenu[] = [];
+  permissionsOperacionesProduccion: PermissionsSubmenu[] = [];
+  permissionsOperacionesCalidad: PermissionsSubmenu[] = [];
+  permissionsDireccionTecnica: PermissionsSubmenu[] = [];
 
 
   validationForm: FormGroup;
-  name: FormControl = new FormControl();
-  description: FormControl = new FormControl();
+  name: FormControl = new FormControl("", [Validators.required]);
+  description: FormControl = new FormControl("", [Validators.required]);
   
   constructor(
     public dialogRef: MatDialogRef<DialogAddRoleUserComponent>,
@@ -45,313 +47,108 @@ export class DialogAddRoleUserComponent implements OnInit {
   public validar: boolean = false;
   public user: any;
   public btnDisables = false; //desactiva el save 
-
-
+  public myArr: any[] = [];
   permisos = {
-    "success": true,
-    "result": {
-      "value": [
-        {
-          "id": 1,
-          "role": "Manager",
-          "description": "Role Manager",
-          "createdBy": 1,
-          "createdDate": "1900-01-01T00:00:00",
-          "updateBy": 1,
-          "updatedDate": "2021-05-03T20:16:26.98",
-          "status": true,
-          "permissions": [
-            {
-              "id": 2,
-              "menu": "Operations",
-              "submenu": "Dashboard",
-              "seccion": "My Dashboard",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 2,
-              "idCatSeccion": 1,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 3,
-              "menu": "Operations",
-              "submenu": "Reports   ",
-              "seccion": "Reports",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 3,
-              "idCatSeccion": 2,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 4,
-              "menu": "Operations",
-              "submenu": "Activity  ",
-              "seccion": "Activity",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 4,
-              "idCatSeccion": 3,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 5,
-              "menu": "Operations",
-              "submenu": "Service Records",
-              "seccion": "Service Record",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 5,
-              "idCatSeccion": 4,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 9,
-              "menu": "Operations",
-              "submenu": "Pending Authorizations",
-              "seccion": "Pending Authorizations",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 6,
-              "idCatSeccion": 5,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 10,
-              "menu": "Operations",
-              "submenu": "Service Calendar",
-              "seccion": "Service Calendar",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 7,
-              "idCatSeccion": 6,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 11,
-              "menu": "Operations",
-              "submenu": "Experience Surveys",
-              "seccion": "Experience Surveys\r\n",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 8,
-              "idCatSeccion": 7,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 12,
-              "menu": "Operations",
-              "submenu": "Supplier Partners",
-              "seccion": "Supplier Partners\r\n",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 9,
-              "idCatSeccion": 8,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 13,
-              "menu": "Operations",
-              "submenu": "Training",
-              "seccion": "My Training\r\n",
-              "idCatMenu": 2,
-              "role": 1,
-              "idCatSubMenu": 10,
-              "idCatSeccion": 9,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 68,
-              "menu": "Partner & Clients",
-              "submenu": "Partner & Clients",
-              "seccion": "Partner & Clients\r\n",
-              "idCatMenu": 3,
-              "role": 1,
-              "idCatSubMenu": 11,
-              "idCatSeccion": 10,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 69,
-              "menu": "Partner & Clients",
-              "submenu": "Leads",
-              "seccion": "Leads\r\n",
-              "idCatMenu": 3,
-              "role": 1,
-              "idCatSubMenu": 12,
-              "idCatSeccion": 11,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 82,
-              "menu": "Finance",
-              "submenu": "Request Center",
-              "seccion": "Request Center\r\n",
-              "idCatMenu": 4,
-              "role": 1,
-              "idCatSubMenu": 13,
-              "idCatSeccion": 12,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 83,
-              "menu": "Finance",
-              "submenu": "Invoices Service",
-              "seccion": "Invoices Service\r\n",
-              "idCatMenu": 4,
-              "role": 1,
-              "idCatSubMenu": 14,
-              "idCatSeccion": 13,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 84,
-              "menu": "Finance",
-              "submenu": "Invoices Supplier",
-              "seccion": "Invoices Supplier\r\n",
-              "idCatMenu": 4,
-              "role": 1,
-              "idCatSubMenu": 20,
-              "idCatSeccion": 18,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 85,
-              "menu": "Finance",
-              "submenu": "Third Party Invoice",
-              "seccion": "Third Party Invoice\r\n",
-              "idCatMenu": 4,
-              "role": 1,
-              "idCatSubMenu": 21,
-              "idCatSeccion": 19,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 110,
-              "menu": "Admin Center",
-              "submenu": "Users",
-              "seccion": "Users\r\n",
-              "idCatMenu": 5,
-              "role": 1,
-              "idCatSubMenu": 15,
-              "idCatSeccion": 14,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 111,
-              "menu": "Admin Center",
-              "submenu": "Catalogs",
-              "seccion": "Catalogs\r\n",
-              "idCatMenu": 5,
-              "role": 1,
-              "idCatSubMenu": 16,
-              "idCatSeccion": 15,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 112,
-              "menu": "Admin Center",
-              "submenu": "System Configration",
-              "seccion": "System Configration\r\n",
-              "idCatMenu": 5,
-              "role": 1,
-              "idCatSubMenu": 17,
-              "idCatSeccion": 16,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 113,
-              "menu": "Admin Center",
-              "submenu": "Training Courses",
-              "seccion": "Training Courses\r\n",
-              "idCatMenu": 5,
-              "role": 1,
-              "idCatSubMenu": 18,
-              "idCatSeccion": 17,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            },
-            {
-              "id": 139,
-              "menu": "Admin Center",
-              "submenu": "VIOLET App Configuration",
-              "seccion": "VIOLET App Configuration\r\n",
-              "idCatMenu": 5,
-              "role": 1,
-              "idCatSubMenu": 22,
-              "idCatSeccion": 20,
-              "reading": true,
-              "writing": true,
-              "editing": true,
-              "deleting": true
-            }
-          ]
-        }
-      ],
-      "formatters": [],
-      "contentTypes": [],
-      "declaredType": null,
-      "statusCode": null
+    "success":true,
+    "result":{
+       "value":[
+          {
+             "id":1,
+             "role":"Manager",
+             "description":"Role Manager",
+             "createdBy":1,
+             "createdDate":"1900-01-01T00:00:00",
+             "updateBy":1,
+             "updatedDate":"2021-05-03T20:16:26.98",
+             "status":true,
+             "permissions":[
+                {
+                   "id":1,
+                   "perfil":"Dirección general",
+                   "idCatPerfil":1,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                },
+                {
+                   "id":2,
+                   "perfil":"Dirección operaciones",
+                   "idCatPerfil":2,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                },
+                {
+                   "id":3,
+                   "perfil":"Gerente finanzas",
+                   "idCatPerfil":3,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                },
+                {
+                   "id":4,
+                   "perfil":"Operaciones Producción",
+                   "idCatPerfil":4,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                },
+                {
+                   "id":5,
+                   "perfil":"Operaciones Calidad",
+                   "idCatPerfil":5,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                },
+                {
+                   "id":6,
+                   "perfil":"Dirección Técnica - Comercial (Antonio de León)",
+                   "idCatPerfil":6,
+                   "role":1,
+                   "administrador":true,
+                   "produccion":true,
+                   "financieros":true,
+                   "trabajadores":true,
+                   "proveedores":true,
+                   "montadores":true
+                }
+             ]
+          }
+       ],
+       "formatters":[
+          
+       ],
+       "contentTypes":[
+          
+       ],
+       "declaredType":null,
+       "statusCode":null
     }
-  }
+ }
 
-
+ selectAll: boolean = false;
 
   ngOnInit(): void {
     this.loader.show();
@@ -366,133 +163,178 @@ export class DialogAddRoleUserComponent implements OnInit {
           this.data = this.permisos.result.value[0];
 
           for (var i = 0; i < this.data.permissions.length; i++) {
-            switch (this.data.permissions[i].menu) {
-              case 'Operations':
-                //for (j = 0; j < this.data.permissions[i].)
-                this.permissionsOperation.push({
+            switch (this.data.permissions[i].perfil) {
+              case 'Dirección general':
+                // permissionsDireccionGeneral
+                this.permissionsDireccionGeneral.push({
                   id: this.data.permissions[i].id,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: this.data.permissions[i].reading,
-                  writing: this.data.permissions[i].writing,
-                  editing: this.data.permissions[i].editing,
-                  deleting: this.data.permissions[i].deleting
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
                 });
                 this.permissions.push(
                   {
                     color: 'lightblue',
                     cols: 1,
                     rows: 9,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsOperation
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsDireccionGeneral
                   });
                 break;
-              case 'Partner & Clients':
-                this.permissionsPartner.push({
+              case 'Dirección operaciones':
+                this.permissionsDireccionOperaciones.push({
                   id: this.data.permissions[i].id,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: this.data.permissions[i].reading,
-                  writing: this.data.permissions[i].writing,
-                  editing: this.data.permissions[i].editing,
-                  deleting: this.data.permissions[i].deleting
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
                 });
                 this.permissions.push(
                   {
                     color: '#F9F9F9',
                     cols: 1,
                     rows: 2,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsPartner
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsDireccionOperaciones
                   });
                 break;
-              case 'Finance':
-                this.permissionsFinace.push({
+              case 'Gerente finanzas':
+                this.permissionsGerenteFinanzas.push({
                   id: this.data.permissions[i].id,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: this.data.permissions[i].reading,
-                  writing: this.data.permissions[i].writing,
-                  editing: this.data.permissions[i].editing,
-                  deleting: this.data.permissions[i].deleting
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
                 });
                 this.permissions.push(
                   {
                     color: 'lightblue',
                     cols: 1,
                     rows: 4,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsFinace
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsGerenteFinanzas
                   });
                 break;
-              case 'Admin Center':
-                this.permissionsAdmin.push({
+              case 'Operaciones Producción':
+                this.permissionsOperacionesProduccion.push({
                   id: this.data.permissions[i].id,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: this.data.permissions[i].reading,
-                  writing: this.data.permissions[i].writing,
-                  editing: this.data.permissions[i].editing,
-                  deleting: this.data.permissions[i].deleting
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
                 });
                 this.permissions.push(
                   {
                     color: '#F9F9F9',
                     cols: 1,
                     rows: 5,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsAdmin
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsOperacionesProduccion
+                  });
+                break;
+              case 'Operaciones Calidad':
+                //for (j = 0; j < this.data.permissions[i].)
+                this.permissionsOperacionesCalidad.push({
+                  id: this.data.permissions[i].id,
+                  role: this.data.id,
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
+                });
+                this.permissions.push(
+                  {
+                    color: 'lightblue',
+                    cols: 1,
+                    rows: 9,
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsOperacionesCalidad
+                  });
+                break;
+              case 'Dirección Técnica - Comercial (Antonio de León)':
+                this.permissionsDireccionTecnica.push({
+                  id: this.data.permissions[i].id,
+                  role: this.data.id,
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: this.data.permissions[i].administrador,
+                  produccion: this.data.permissions[i].produccion,
+                  financieros: this.data.permissions[i].financieros,
+                  trabajadores: this.data.permissions[i].trabajadores,
+                  proveedores: this.data.permissions[i].proveedores,
+                  montadores: this.data.permissions[i].montadores,
+                });
+                this.permissions.push(
+                  {
+                    color: 'lightblue',
+                    cols: 1,
+                    rows: 9,
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsDireccionTecnica
                   });
                 break;
               default:
-              // code block
             }
           }
 
-         
          for(let i = 0; i < this.permissions.length; i++){
-          if(this.permissions[i].menu == "Operations"){
-           this.myArr.push(this.permissions[i]);
-           break;
+            if(this.permissions[i].perfil == "Dirección general"){
+            this.myArr.push(this.permissions[i]);
+            break;
+            }
           }
-       }
 
-       for(let i = 0; i < this.permissions.length; i++){
-         if(this.permissions[i].menu == "Partner & Clients"){
-          this.myArr.push(this.permissions[i]);
-          break;
-         }
-       }
+          for(let i = 0; i < this.permissions.length; i++){
+            if(this.permissions[i].perfil == "Dirección operaciones"){
+              this.myArr.push(this.permissions[i]);
+              break;
+            }
+          }
 
-       for(let i = 0; i < this.permissions.length; i++){
-         if(this.permissions[i].menu == "Finance"){
-          this.myArr.push(this.permissions[i]);
-          break;
-         }
-       }
+          for(let i = 0; i < this.permissions.length; i++){
+            if(this.permissions[i].perfil == "Gerente finanzas"){
+              this.myArr.push(this.permissions[i]);
+              break;
+            }
+          }
 
-       for(let i = 0; i < this.permissions.length; i++){
-         if(this.permissions[i].menu == "Admin Center"){
-          this.myArr.push(this.permissions[i]);
-          break;
-         }
-       }
+          for(let i = 0; i < this.permissions.length; i++){
+            if(this.permissions[i].perfil == "Operaciones Producción"){
+              this.myArr.push(this.permissions[i]);
+              break;
+            }
+          }
+          for(let i = 0; i < this.permissions.length; i++){
+            if(this.permissions[i].perfil == "Operaciones Calidad"){
+              this.myArr.push(this.permissions[i]);
+              break;
+            }
+          }
+          for(let i = 0; i < this.permissions.length; i++){
+            if(this.permissions[i].perfil == "Dirección Técnica - Comercial (Antonio de León)"){
+              this.myArr.push(this.permissions[i]);
+              break;
+            }
+          }
           //const newArr = this.permissions.filter((el: any, index) => myArr.indexOf(el) === index)
 
           console.log(this.myArr);
@@ -510,109 +352,147 @@ export class DialogAddRoleUserComponent implements OnInit {
           this.data.createdDate = null;
 
           for (var i = 0; i < this.data.permissions.length; i++) {
-            switch (this.data.permissions[i].menu) {
-              case 'Operations':
-                //for (j = 0; j < this.data.permissions[i].)
-                this.permissionsOperation.push({
+            switch (this.data.permissions[i].perfil) {
+              case 'Dirección general':
+                this.permissionsDireccionGeneral.push({
                   id: 0,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: false,
-                  writing: false,
-                  editing: false,
-                  deleting: false
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: false,
+                  produccion: false,
+                  financieros: false,
+                  trabajadores: false,
+                  proveedores: false,
+                  montadores: false
                 });
                 this.permissions.push(
                   {
                     color: 'lightblue',
                     cols: 1,
                     rows: 9,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsOperation
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsDireccionGeneral
                   });
                 break;
-              case 'Partner & Clients':
-                this.permissionsPartner.push({
+              case 'Dirección operaciones':
+                this.permissionsDireccionOperaciones.push({
                   id: 0,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: false,
-                  writing: false,
-                  editing: false,
-                  deleting: false
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: false,
+                  produccion: false,
+                  financieros: false,
+                  trabajadores: false,
+                  proveedores: false,
+                  montadores: false
                 });
                 this.permissions.push(
                   {
                     color: '#F9F9F9',
                     cols: 1,
                     rows: 2,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsPartner
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsDireccionOperaciones
                   });
                 break;
-              case 'Finance':
-                this.permissionsFinace.push({
+              case 'Gerente finanzas':
+                this.permissionsGerenteFinanzas.push({
                   id: 0,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: false,
-                  writing: false,
-                  editing: false,
-                  deleting: false
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: false,
+                  produccion: false,
+                  financieros: false,
+                  trabajadores: false,
+                  proveedores: false,
+                  montadores: false
                 });
                 this.permissions.push(
                   {
                     color: 'lightblue',
                     cols: 1,
                     rows: 4,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsFinace
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsGerenteFinanzas
                   });
                 break;
-              case 'Admin Center':
-                this.permissionsAdmin.push({
+              case 'Operaciones Producción':
+                this.permissionsOperacionesProduccion.push({
                   id: 0,
                   role: this.data.id,
-                  idCatMenu: this.data.permissions[i].idCatMenu,
-                  idCatSubMenu: this.data.permissions[i].idCatSubMenu,
-                  idCatSeccion: this.data.permissions[i].idCatSeccion,
-                  submenu: this.data.permissions[i].submenu,
-                  seccion: this.data.permissions[i].seccion,
-                  reading: false,
-                  writing: false,
-                  editing: false,
-                  deleting: false
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: false,
+                  produccion: false,
+                  financieros: false,
+                  trabajadores: false,
+                  proveedores: false,
+                  montadores: false
                 });
                 this.permissions.push(
                   {
                     color: '#F9F9F9',
                     cols: 1,
                     rows: 5,
-                    menu: this.data.permissions[i].menu,
-                    permissionssubmenu: this.permissionsAdmin
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsOperacionesProduccion
                   });
-                break;
+              break;
+              case 'Operaciones Calidad':
+                this.permissionsOperacionesCalidad.push({
+                  id: 0,
+                  role: this.data.id,
+                  idCatPerfil: this.data.permissions[i].idCatPerfil,
+                  administrador: false,
+                  produccion: false,
+                  financieros: false,
+                  trabajadores: false,
+                  proveedores: false,
+                  montadores: false
+                });
+                this.permissions.push(
+                  {
+                    color: 'lightblue',
+                    cols: 1,
+                    rows: 5,
+                    perfil: this.data.permissions[i].perfil,
+                    permissionssubmenu: this.permissionsOperacionesCalidad
+                  });
+              break;
+
+              case 'Dirección Técnica - Comercial (Antonio de León)':
+              this.permissionsDireccionTecnica.push({
+                id: 0,
+                role: this.data.id,
+                idCatPerfil: this.data.permissions[i].idCatPerfil,
+                administrador: false,
+                produccion: false,
+                financieros: false,
+                trabajadores: false,
+                proveedores: false,
+                montadores: false
+              });
+              this.permissions.push(
+                {
+                  color: '#F9F9F9',
+                  cols: 1,
+                  rows: 5,
+                  perfil: this.data.permissions[i].perfil,
+                  permissionssubmenu: this.permissionsDireccionTecnica
+                });
+            break;
+
               default:
               // code block
             }
           }
 
           this.myArr.push(this.permissions[0]);
-          this.myArr.push(this.permissions[9]);
-          this.myArr.push(this.permissions[11]);
-          this.myArr.push(this.permissions[15]);
+          this.myArr.push(this.permissions[1]);
+          this.myArr.push(this.permissions[2]);
+          this.myArr.push(this.permissions[3]);
+          this.myArr.push(this.permissions[4]);
+          this.myArr.push(this.permissions[5]);
+
           /*
           for(let i = 0; i < this.permissions.length; i++){
              if(this.permissions[i].menu == "Operations"){
@@ -653,9 +533,57 @@ export class DialogAddRoleUserComponent implements OnInit {
     this.loader.hide();
   }
 
+  AllRole() {
+    this.selectAll = true;
+    console.log('select all permissions');
+    // recorremos el array
+
+    for (let i = 0; i < this.myArr.length; i++) {
+      const arr = this.myArr[i];
+      for (let o = 0; o < arr.permissionssubmenu.length; o++) {
+        const permisos = arr.permissionssubmenu[o];
+        permisos.administrador = true;
+        permisos.produccion = true;
+        permisos.financieros = true;
+        permisos.trabajadores = true;
+        permisos.proveedores = true;
+        permisos.montadores = true;
+        
+      }
+    }
+  }
+  unSelectRole() {
+    this.selectAll = false;
+    console.log('unselect all permissions');
+    // recorremos el array
+    for (let i = 0; i < this.myArr.length; i++) {
+      const arr = this.myArr[i];
+      for (let o = 0; o < arr.permissionssubmenu.length; o++) {
+        const permisos = arr.permissionssubmenu[o];
+        permisos.administrador = false;
+        permisos.produccion = false;
+        permisos.financieros = false;
+        permisos.trabajadores = false;
+        permisos.proveedores = false;
+        permisos.montadores = false;
+      }
+    }
+  }
+    // this.myArr.forEach(menu => {
+    //   menu.permissionssubmenu.forEach(permisos => {
+    //     permisos.administrador = false;
+    //     permisos.produccion = false;
+    //     permisos.financieros = false;
+    //     permisos.trabajadores = false;
+    //     permisos.proveedores = false;
+    //     permisos.montadores = false;
+    //   });
+    // });
+  
+
 
   save(){
-    
+    this.dialogRef.close(1);
   }
 
 }
@@ -664,20 +592,21 @@ class PermissionsMenu {
   color: string = "";
   cols: number = 0;
   rows: number = 0;
-  menu: string = "";
+  perfil: string = "";
   permissionssubmenu: PermissionsSubmenu[] = [];
 }
 
 class PermissionsSubmenu {
   id: number = 0;
   role: number = 0;
-  idCatMenu: number = 0;
-  idCatSubMenu: number = 0;
-  idCatSeccion: number = 0;
-  submenu: string = '';
-  seccion: string = '';
-  reading: boolean = false;
-  writing: boolean = false;
-  editing: boolean = false;
-  deleting: boolean = false;
+  idCatPerfil: number = 0;
+  administrador: boolean = false;
+  produccion: boolean = false;
+  financieros: boolean = false;
+  trabajadores: boolean = false;
+  proveedores: boolean = false;
+  montadores: boolean = false;
 }
+
+
+
