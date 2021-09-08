@@ -6,20 +6,33 @@
 
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 $primary: #1F4C7A;
+@font-face {
+    font-family: Montserrat;
+    src: url("./assets/fuente/Montserrat-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: Montserrat-bold;
+    src: url("./assets/fuente/Montserrat-Bold.ttf");
+  }
 
 html,
 body {
     height: 100%;
 }
 
+*{
+    font-family: Montserrat;
+}
+
 body {
     margin: 0;
-    font-family: Arial !important;
+    font-family: Montserrat !important;
     
 }
 
 .font_letter{
-    font-family: Arial !important;
+    font-family: Montserrat !important;
 }
 
 

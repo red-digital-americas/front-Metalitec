@@ -16,4 +16,11 @@ export class LoaderService {
     this.spinner.hide();
   }
 
+  callLoader(){
+    this.show();
+    setTimeout(() => {
+      this.hide();
+    }, 5000);
+  }
+
 }
