@@ -1,7 +1,7 @@
 <div class="margin font_letter">
   <div [ngClass]="{'big': big, 'small': small}">
     <div *ngIf='menu' id="div_small" class="font_letter">
-   
+
       <br>
 
       <mat-accordion class="menu_expansion" multi>
@@ -12,19 +12,20 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="title_expansion font_letter">
-            <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active" class="size top font_letter">
+            <button mat-button [routerLink]="['/home/finanzas']" routerLinkActive="router-link-active"
+              class="size top font_letter reportes">
               <mat-icon class="color_icon">attach_money</mat-icon>
               Informes financieros
             </button>
             <br>
             <button mat-button [routerLink]="['/home/proveedores']" routerLinkActive="router-link-active"
-              class="size top font_letter">
+              class="size top font_letter reportes">
               <mat-icon class="color_icon">playlist_add_check_circle</mat-icon>
               Clasificación de proveedores
             </button>
             <br>
             <button mat-button [routerLink]="['/home/montadores']" routerLinkActive="router-link-active"
-              class="size font_letter top">
+              class="size font_letter top reportes">
               <mat-icon class="color_icon">local_shipping</mat-icon>
               Proveedores montadores
             </button>
@@ -40,17 +41,20 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="title_expansion">
-            <button mat-button  [routerLink]="['/home/usuarios']" routerLinkActive="router-link-active" class="size font_letter top">
+            <button mat-button [routerLink]="['/home/usuarios']" routerLinkActive="router-link-active"
+              class="size font_letter top reportes">
               <mat-icon class="color_icon">group</mat-icon>
               Usuarios
             </button>
             <br>
-            <button mat-button  [routerLink]="['/home/roles']" routerLinkActive="router-link-active" class="size font_letter top">
+            <button mat-button [routerLink]="['/home/roles']" routerLinkActive="router-link-active"
+              class="size font_letter top reportes">
               <mat-icon class="color_icon">verified_user</mat-icon>
-              Roles
+              Roles & Permisos
             </button>
             <br>
-            <button mat-button [routerLink]="['/home/Upload']" routerLinkActive="router-link-active" class="size font_letter top">
+            <button mat-button [routerLink]="['/home/Upload']" routerLinkActive="router-link-active"
+              class="size font_letter top reportes">
               <mat-icon class="color_icon">content_copy</mat-icon>
               Carga témplate Excel
             </button>
@@ -76,28 +80,31 @@
           Informes financieros
         </button>
         <hr class="hr_matMenu">
-        <button class="width_button font_letter" mat-button [routerLink]="['/home/proveedores']"
-          >
+        <button class="width_button font_letter" mat-button [routerLink]="['/home/proveedores']">
           Clasificación de proveedores
         </button>
-        <hr class="hr_matMenu" >
+        <hr class="hr_matMenu">
         <button class="width_button font_letter" mat-button [routerLink]="['/home/montadores']">
           Proveedores montadores
         </button>
       </mat-menu>
 
       <br>
-      
+
       <button mat-button [matMenuTriggerFor]="admin">
         <mat-icon class="color_icon">group</mat-icon>
       </button>
 
       <mat-menu #admin="matMenu" class="bg_expansion font_letter">
-        <button mat-button [routerLink]="['/home/usuarios']" class="font_letter">
+        <button mat-button [routerLink]="['/home/usuarios']" class="font_letter matMenu">
           Usuarios
         </button>
         <hr class="hr_matMenu">
-        <button mat-button [routerLink]="['/home/Upload']" class="font_letter">
+        <button mat-button [routerLink]="['/home/roles']" class="font_letter matMenu">
+          Roles & Permisos
+        </button>
+        <hr class="hr_matMenu">
+        <button mat-button [routerLink]="['/home/Upload']" class="font_letter matMenu">
           Carga témplate Excel
         </button>
       </mat-menu>
