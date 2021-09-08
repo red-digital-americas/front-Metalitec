@@ -124,7 +124,7 @@ export class DialogAddRoleUserComponent implements OnInit {
                 },
                 {
                    "id":6,
-                   "perfil":"Dirección Técnica - Comercial (Antonio de León)",
+                   "perfil":"Dirección Técnica - Comercial",
                    "idCatPerfil":6,
                    "role":1,
                    "administrador":true,
@@ -271,7 +271,7 @@ export class DialogAddRoleUserComponent implements OnInit {
                     permissionssubmenu: this.permissionsOperacionesCalidad
                   });
                 break;
-              case 'Dirección Técnica - Comercial (Antonio de León)':
+              case 'Dirección Técnica - Comercial':
                 this.permissionsDireccionTecnica.push({
                   id: this.data.permissions[i].id,
                   role: this.data.id,
@@ -330,7 +330,7 @@ export class DialogAddRoleUserComponent implements OnInit {
             }
           }
           for(let i = 0; i < this.permissions.length; i++){
-            if(this.permissions[i].perfil == "Dirección Técnica - Comercial (Antonio de León)"){
+            if(this.permissions[i].perfil == "Dirección Técnica - Comercial"){
               this.myArr.push(this.permissions[i]);
               break;
             }
@@ -459,7 +459,7 @@ export class DialogAddRoleUserComponent implements OnInit {
                   });
               break;
 
-              case 'Dirección Técnica - Comercial (Antonio de León)':
+              case 'Dirección Técnica - Comercial':
               this.permissionsDireccionTecnica.push({
                 id: 0,
                 role: this.data.id,
