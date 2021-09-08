@@ -2,3 +2,22 @@
 	align-content: end;
 	text-align: end;
 }
+.scroll{
+	overflow-y: auto;
+	height: 31rem;
+	width: 100%;
+}
+.alingCheck{
+	text-align: center;
+	align-content: center;
+	align-self: center;
+}
+.selectAll{
+	align-content: end;
+	text-align: end;
+	color: #1F4C7A;
+	font-size: 14px;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-weight: bold;
+}

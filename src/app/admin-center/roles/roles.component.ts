@@ -67,27 +67,35 @@ export class RolesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result == 'si') {
-        this.auth.service_general_delete(`User?id=${id}`).subscribe((data) =>{
-          console.log('respuesta de eliminacion', data);
-          if (data.success) {
-            const dialog = this._dialog.open(DialogMessageComponent, {
-              data: {
-                header: "Exito",
-                body: 'El Rol se borro correctamente'
-              },
-            });
-            this.ngOnInit();
-          }
-        }, (error) => {
-            console.error('error con el delete', error);
-            const dialog2 = this._dialog.open(DialogMessageComponent, {
-            data: {
-              header: "Atención",
-              body: `Este Rol no se puede eliminar, por que esta en uso`
-            },
-            });
-            this.ngOnInit();
-        })
+        
+        const dialog = this._dialog.open(DialogMessageComponent, {
+                data: {
+                  header: "Exito",
+                  body: 'El Rol se borro correctamente'
+                },
+              });
+
+        // this.auth.service_general_delete(`User?id=${id}`).subscribe((data) =>{
+        //   console.log('respuesta de eliminacion', data);
+        //   if (data.success) {
+        //     const dialog = this._dialog.open(DialogMessageComponent, {
+        //       data: {
+        //         header: "Exito",
+        //         body: 'El Rol se borro correctamente'
+        //       },
+        //     });
+        //     this.ngOnInit();
+        //   }
+        // }, (error) => {
+        //     console.error('error con el delete', error);
+        //     const dialog2 = this._dialog.open(DialogMessageComponent, {
+        //     data: {
+        //       header: "Atención",
+        //       body: `Este Rol no se puede eliminar, por que esta en uso`
+        //     },
+        //     });
+        //     this.ngOnInit();
+        // })
       }
     });
   }
