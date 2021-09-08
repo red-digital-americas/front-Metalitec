@@ -50,6 +50,10 @@ body {
     .mat-expansion-indicator::after{
         color: white !important;
     }
+
+    .mat-expansion-panel-body{
+        padding: 0px 5px 16px;
+    }
 }
 
 .menu_expansion_small{
