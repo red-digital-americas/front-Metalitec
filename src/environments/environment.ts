@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://demo-minimalist.com/back/api_metalitec/api/'
+  API_URL: 'http://34.237.214.147/back/api_metalitec/api/'
 };
 
 /*
