@@ -2,13 +2,13 @@ import { Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { ConectionapiService } from 'src/app/authService/conectionapi.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { CreateUserComponent } from './../dialog/create-user/create-user.component';
-import { DialogGeneralMessageComponent } from '../dialog/dialog-general-message/dialog-general-message.component';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { GeneralConfirmacionComponent } from '../dialog/general-confirmacion/general-confirmacion.component';
 import { LoaderService } from 'src/app/loaderService/loader.service';
+import { DialogGeneralMessageComponent } from 'src/app/dialog/dialog-general-message/dialog-general-message.component';
+import { CreateUserComponent } from 'src/app/dialog/create-user/create-user.component';
+import { GeneralConfirmacionComponent } from 'src/app/dialog/general-confirmacion/general-confirmacion.component';
 
 
 @Component({

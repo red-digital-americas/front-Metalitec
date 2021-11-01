@@ -40,23 +40,23 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './layout/header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
-import { CreateUserComponent } from './reportes/dialog/create-user/create-user.component';
-import { DialogGeneralMessageComponent } from './reportes/dialog/dialog-general-message/dialog-general-message.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { GeneralConfirmacionComponent } from './reportes/dialog/general-confirmacion/general-confirmacion.component';
 import { DialogMessageComponent } from './dialog/dialog-message/dialog-message.component';
 import { MatRippleModule } from '@angular/material/core';
 import { DocumentosComponent } from './admin-center/documentos/documentos.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatSelectModule } from '@angular/material/select';
-import { DialogChangePasswordComponent } from './reportes/dialog/dialog-change-password/dialog-change-password.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RolesComponent } from './admin-center/roles/roles.component';
 import { DialogAddRoleUserComponent } from './dialog/dialog-add-role-user/dialog-add-role-user.component';
 import { DialogGeneralConfirmationComponent } from './dialog/dialog-general-confirmation/dialog-general-confirmation.component';
+import { DialogChangePasswordComponent } from './dialog/dialog-change-password/dialog-change-password.component';
+import { GeneralConfirmacionComponent } from './dialog/general-confirmacion/general-confirmacion.component';
+import { DialogGeneralMessageComponent } from './dialog/dialog-general-message/dialog-general-message.component';
+import { CreateUserComponent } from './dialog/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +76,11 @@ import { DialogGeneralConfirmationComponent } from './dialog/dialog-general-conf
     DialogGeneralMessageComponent,
     GeneralConfirmacionComponent,
     DialogMessageComponent, 
-    DocumentosComponent, DialogChangePasswordComponent, RolesComponent, DialogAddRoleUserComponent, DialogGeneralConfirmationComponent
+    DocumentosComponent, 
+    DialogChangePasswordComponent, 
+    RolesComponent, 
+    DialogAddRoleUserComponent, 
+    DialogGeneralConfirmationComponent
   ],
   imports: [
     MatProgressBarModule,
